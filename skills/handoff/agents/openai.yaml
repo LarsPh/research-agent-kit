@@ -1,0 +1,4 @@
+interface:
+  display_name: "Handoff"
+  short_description: "Create and resume concise agent handoffs."
+  default_prompt: "Use $handoff to write or resume from a concise project handoff for another coding agent."

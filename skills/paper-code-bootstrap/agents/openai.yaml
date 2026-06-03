@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Code Bootstrap"
+  short_description: "Set up research demos with uv and checkpoints."
+  default_prompt: "Use $paper-code-bootstrap to set up this research repository with uv, download required checkpoints, and verify an inference demo."
