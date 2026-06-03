@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Task Implementation"
+  short_description: "Plan and implement research-code tasks from docs."
+  default_prompt: "Use this workflow to inspect the repository, read the task document, plan the implementation, edit code safely, and verify the result."
