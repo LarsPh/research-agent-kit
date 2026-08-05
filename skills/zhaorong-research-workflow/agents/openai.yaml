@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zhaorong Research Workflow"
+  short_description: "Guide adaptive research sprints from evidence to review."
+  default_prompt: "Use $zhaorong-research-workflow to initialize or advance this research repository through an evidence-driven sprint."

@@ -1,50 +1,69 @@
 # Research Agent Kit
 
-Reusable agent instructions and skills for research-code projects: bootstrap a fresh paper repository, hand off context between agents, and carry a task from repository inspection through implementation and validation.
+Platform-neutral Codex skills for evidence-driven machine-learning and graphics research. The kit supports
+existing-repository onboarding, rolling exploratory sprints, decision-complete implementation, and agent
+handoffs without assuming a particular compute platform.
 
-This kit is meant to be copied into your own Codex or coding-agent setup and adapted to your lab. The included `AGENTS.md` is a template, so replace placeholder machine names, usernames, mount paths, CUDA locations, queue policies, and other environment-specific details with values that match your actual workflow.
+## Skills
 
-## Contents
+- `zhaorong-research-workflow` — initialize a migrated research repository, explore code and new data,
+  manage a rolling frontier, analyze experiments, and trigger implementation/review at the right boundary.
+- `research-task-implementation` — implement one decision-complete research bite from its authority document
+  while maintaining checklist and validation evidence.
+- `paper-code-bootstrap` — bootstrap an external paper repository and validate a runnable inference path.
+- `handoff` — create or consume concise cross-agent handoffs.
 
-- `AGENTS.md` - template research/GPU/uv workflow instructions for coding agents.
-- `skills/paper-code-bootstrap` - set up a newly cloned paper-code repository with `uv`, checkpoints, CUDA extensions, and an inference smoke test.
-- `skills/research-task-implementation` - rebuild context from a research repo and task document, then implement, validate, and report concrete commands.
-- `skills/handoff` - create or resume concise project handoffs between coding agents.
+## Recommended Installation Order
 
-## Install Into Codex
+Install the workflow and implementation skills at user scope first:
 
 ```fish
-mkdir -p ~/.codex/skills
-cp -R skills/paper-code-bootstrap ~/.codex/skills/
-cp -R skills/research-task-implementation ~/.codex/skills/
-cp -R skills/handoff ~/.codex/skills/
-cp AGENTS.md ~/.codex/AGENTS.md
+npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
 ```
 
-If you already have `~/.codex/AGENTS.md`, merge the relevant sections instead of overwriting it.
-
-## Example Prompts
+Then start a fresh Codex session and initialize the target repository explicitly:
 
 ```text
-Use $paper-code-bootstrap to set up this new paper repository with uv, download checkpoints, and verify an inference demo.
+Use $zhaorong-research-workflow to initialize this existing research repository. Audit first, draft the
+repository workflow, and stop before configuring the project environment.
 ```
 
-```text
-Use $research-task-implementation with docs/tasks/adapter_ablation.md, inspect the repo first, then implement the requested config and training changes.
+The workflow will check for Matt Pocock's engineering skills. When they are absent, install them after the
+workflow has explained why they are needed:
+
+```fish
+npx skills add mattpocock/skills -g -a codex -s '*' -y --copy
 ```
 
-```text
-Use $handoff to write a HANDOFF.md so another coding agent can continue from here.
+Restart Codex again, resume the repository initialization, and run `$setup-matt-pocock-skills` when prompted.
+The project-specific environment and compute workflow come only after repository authority is initialized
+and reviewed.
+
+To inspect the package before installation:
+
+```fish
+npx skills add LarsPh/research-agent-kit -l
 ```
 
-```text
-Use $handoff to resume from HANDOFF.md before making changes.
-```
+If `npx skills` is unavailable, copy only the selected folders under `skills/` into the Codex user skill
+directory. Restart Codex and verify that both names appear in the available-skill list. File presence alone
+does not prove discovery.
 
-## Notes
+## Workflow Shape
 
-- Treat this repository as a starting point, not a drop-in description of your environment.
-- Fill in concrete hostnames, paths, CUDA/toolchain locations, and GPU usage rules before relying on the template in real projects.
-- Prefer repo-local `.venv` environments and `uv run`.
-- Build CUDA extensions on GPU nodes, not file servers.
-- Compile CUDA extensions for every GPU architecture that may use the shared environment.
+The workflow deliberately avoids a fixed all-stage plan:
+
+1. discuss the next research question and record a rolling frontier;
+2. choose a bounded exploration or a decision-complete implementation bite;
+3. run truthful tests/experiments and inspect representative visuals;
+4. analyze observations, confounds, and claim boundaries;
+5. continue, pivot, defer, reject, or promote through a risk-based review node.
+
+Raw outputs and checkpoints belong in the target platform's discovered persistent artifact store. Only
+reviewed analysis and representative evidence should enter Git.
+
+## Public/Private Boundary
+
+Keep this repository generic and public. Site-specific images, job commands, mounts, caches, data paths,
+secrets, and internal policies belong only in the private target repository after the workflow has explored
+the real environment.
