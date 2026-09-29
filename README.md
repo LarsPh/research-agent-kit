@@ -1,85 +1,85 @@
 # Research Agent Kit
 
-中文 · [English](README.en.md)
+[中文](README.zh-CN.md) · English
 
-用于机器学习与图形学研究的 agent skills，覆盖代码仓库接手、实验推进、任务实现、交接和学术报告。具体计算环境由 agent 在项目中确认。
+Agent skills for machine-learning and graphics research, covering repository onboarding, experiments, implementation, handoffs, and academic presentations. Agents inspect the target project to establish its computing environment.
 
 ## Skills
 
-| Skill | 用途 |
+| Skill | Purpose |
 |---|---|
-| [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | 接手研究仓库，探索代码和数据，分析实验，维护下一步研究问题 |
-| [research-task-implementation](skills/research-task-implementation/SKILL.md) | 根据已确定的方案实现一个研究任务，记录检查项和验证证据 |
-| [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | 配置论文代码仓库，验证可运行的推理流程 |
-| [handoff](skills/handoff/SKILL.md) | 编写或读取跨 agent 的工作交接 |
-| [academic-slides](skills/academic-slides/SKILL.md) | 组织学术叙事、图文证据与台词，保护改稿边界并核验交付 |
-| [natural-expression](skills/natural-expression/SKILL.md) | 按页面文字、口头稿和正文的用途去冗，减少模板表达 |
-| [japanese-expression](skills/japanese-expression/SKILL.md) | 调整日语主语省略、指代、句间连接与朗读节奏 |
+| [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | Onboard a research repository, explore code and data, analyze experiments, and maintain the next research questions |
+| [research-task-implementation](skills/research-task-implementation/SKILL.md) | Implement a research task from an agreed plan, with checklists and validation evidence |
+| [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | Set up a paper repository and verify a runnable inference path |
+| [handoff](skills/handoff/SKILL.md) | Create or consume cross-agent work handoffs |
+| [academic-slides](skills/academic-slides/SKILL.md) | Organize research narratives, visual evidence, and speaker notes; preserve editing boundaries and verify deliverables |
+| [natural-expression](skills/natural-expression/SKILL.md) | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
+| [japanese-expression](skills/japanese-expression/SKILL.md) | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
 
-README 提供中英两版；每个 skill 只维护一份正文，按其用途保留现有语言。三个报告与表达 skills 使用中文说明，成稿语言按任务决定。
+The README is available in Chinese and English. Each skill has one maintained text in its existing language. The three presentation and expression skills have Chinese instructions; the task determines the language of the output.
 
-## 安装报告与表达 skills
+## Install the presentation and expression skills
 
-建议一起安装这三个模块：
+Install these three modules together:
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
 ```
 
-`academic-slides` 写作时读取 `natural-expression`，涉及日语再读取 `japanese-expression`；纯布局修改不加载语言模块。语言模块也可独立使用。这组 skills 无需先配置研究代码工作流。
+For writing tasks, `academic-slides` reads `natural-expression` and also reads `japanese-expression` when the text is Japanese. Layout-only edits do not load language modules. The language modules can also be used independently. This group does not require the research-code workflow.
 
-使用示例：
+Example requests:
 
 ```text
-用 $academic-slides 检查这份报告的叙事与台词，先讨论，不直接改文件。
-用 $natural-expression 润色这段正文，保留原意，减少重复与模板表达。
-用 $japanese-expression 修改这段日语台词，保留句间连接和研究结论的范围。
+Use $academic-slides to review this presentation's narrative and speaker notes. Discuss changes before editing files.
+Use $natural-expression to edit this prose, preserving its meaning while reducing repetition and formulaic language.
+Use $japanese-expression to revise these Japanese speaker notes, preserving sentence connections and the scope of research claims.
 ```
 
-## 安装研究代码工作流
+## Install the research-code workflow
 
-先安装工作流和实现模块：
+Start with the workflow and implementation modules:
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
 ```
 
-在能识别这些 skills 的新会话中，明确启动仓库初始化：
+In a new session that recognizes the skills, explicitly initialize the target repository:
 
 ```text
-用 $zhaorong-research-workflow 初始化这个已有研究仓库。先审查并拟定仓库工作流，暂不配置项目环境。
+Use $zhaorong-research-workflow to initialize this existing research repository. Audit it and draft the repository workflow first; stop before configuring the project environment.
 ```
 
-工作流会检查 Matt Pocock 的工程 skills。缺失时，先确认工作流说明的依赖用途，再安装：
+The workflow checks for Matt Pocock's engineering skills. If they are missing, review the workflow's explanation of the dependencies, then install them:
 
 ```sh
 npx skills add mattpocock/skills -g -a codex -s '*' -y --copy
 ```
 
-继续初始化，并在提示时运行 `$setup-matt-pocock-skills`。先确认项目规则与工作流，再配置项目环境和计算任务。
+Resume initialization and run `$setup-matt-pocock-skills` when prompted. Establish the project rules and workflow before configuring the environment and compute jobs.
 
-## 查看与确认安装
+## Inspect and verify installation
 
-安装前可列出仓库中的 skills：
+List the available skills before installing:
 
 ```sh
 npx skills add LarsPh/research-agent-kit -l
 ```
 
-`-g` 表示用户级安装，`-a codex` 指定 Codex。若无法使用 `npx skills`，可将选中的 `skills/` 子目录完整复制到目标 agent 的用户 skill 目录；报告与表达模块建议一起复制，以保留相对引用。
+`-g` installs at user scope; `-a codex` selects Codex. If `npx skills` is unavailable, copy the selected folders under `skills/` into the target agent's user skill directory. Copy the presentation and expression modules together to preserve their relative references.
 
-安装后，在目标 agent 的可用 skill 列表中确认名称；列表尚未更新时开启新会话检查。仅看到文件存在不代表已被识别。
+After installation, confirm the names in the target agent's available-skill list. If the list has not refreshed, check in a new session. Files on disk alone do not prove discovery.
 
-## 研究工作流
+## Research workflow
 
-1. 讨论下一个研究问题，维护随实验更新的待探索方向。
-2. 选择范围明确的探索任务，或方案已经确定的实现任务。
-3. 运行测试和实验，检查代表性结果图。
-4. 分析观察、混杂因素与结论边界。
-5. 根据证据决定继续、转向、延期、放弃或进入实现与审阅。
+1. Discuss the next research question and update the directions to explore.
+2. Select a bounded exploration task or an implementation task with an agreed plan.
+3. Run tests and experiments, then inspect representative visuals.
+4. Analyze observations, confounds, and claim boundaries.
+5. Use the evidence to continue, pivot, defer, reject, or move into implementation and review.
 
-原始输出和检查点存入项目所用的持久化存储；仓库中保留经过审阅的分析与代表性证据。
+Store raw outputs and checkpoints in the project's persistent artifact storage. Keep reviewed analysis and representative evidence in the repository.
 
-## 项目资料与公开边界
+## Project data and public boundaries
 
-本仓库保存通用流程和抽象化案例。机器配置、作业命令、挂载、数据路径、凭据及内部政策留在对应的私有项目中。报告中的研究事实、当前术语和已确认决定也由项目自身资料维护。
+This repository holds reusable workflows and abstract examples. Machine configuration, job commands, mounts, data paths, credentials, and internal policies belong in the relevant private project. Research facts, current terminology, and agreed decisions for a presentation also remain in the project's own materials.
