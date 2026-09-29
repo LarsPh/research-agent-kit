@@ -13,6 +13,24 @@ handoffs without assuming a particular compute platform.
 - `paper-code-bootstrap` — bootstrap an external paper repository and validate a runnable inference path.
 - `handoff` — create or consume concise cross-agent handoffs.
 
+## 学术报告与表达
+
+以下三个 skill 的正文、说明和默认提示使用中文，成稿语言按任务决定：
+
+- [`academic-slides`](skills/academic-slides/SKILL.md)：学术叙事、图文证据、台词衔接、改稿边界及交付核验。
+- [`natural-expression`](skills/natural-expression/SKILL.md)：区分页面文字、口头稿与正文，减少模板表达和无效修辞。
+- [`japanese-expression`](skills/japanese-expression/SKILL.md)：日语主语省略、清楚指代、句间连接及朗读节奏。
+
+PPT 主 skill 在写作时读取通用表达模块，涉及日语再读取日语模块；语言模块也可独立使用。
+建议一起安装以保持依赖完整；无需先初始化研究代码仓库，也不需要安装 Matt 的全部 skills：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
+```
+
+例如：`用 $academic-slides 检查这份报告的叙事与台词，先讨论，不直接改文件。`
+只有排版修改时不加载语言模块。案例均为抽象化示例，具体研究事实和术语放在项目自身资料中。
+
 ## Recommended Installation Order
 
 Install the workflow and implementation skills at user scope first:
