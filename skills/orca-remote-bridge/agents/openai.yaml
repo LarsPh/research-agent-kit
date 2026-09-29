@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orca Remote Bridge"
+  short_description: "Connect desktop agents and remote Orca agents."
+  default_prompt: "Use $orca-remote-bridge to exchange messages and files between the desktop agent and the remote Orca agent."

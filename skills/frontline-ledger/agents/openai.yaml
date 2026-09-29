@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontline Ledger"
+  short_description: "Keep a rolling research ledger and report deltas."
+  default_prompt: "Use $frontline-ledger to update this research line's ledger and report only the delta."

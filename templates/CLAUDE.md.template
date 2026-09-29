@@ -1,0 +1,34 @@
+# Claude Code entry
+
+@AGENTS.md
+
+<!-- Thin bridge: only Claude-specific behavior. Project rules live in AGENTS.md; do not repeat them. -->
+
+## Reporting
+
+- Report deltas: one sentence on what changed, what the user must do now, and which ledger rows changed
+  (`frontline-ledger`). Detail lives in the ledger, not in chat.
+- Speak between tool calls only for a real finding or a change of direction.
+- Lead with the conclusion; explain for a colleague who knows machine learning but not this repository,
+  defining project terms on first use.
+- Put each open question in its own paragraph with a recommendation; when it goes unanswered, proceed on
+  the recommendation.
+
+## Deciding Versus Asking
+
+- Ask only research decisions (the list under "Stop and Ask" in AGENTS.md). Engineering details are
+  yours: decide, record in the ledger, continue.
+
+## Subagents
+
+- Delegate broad searches and routine implementation to cheaper subagents with a complete spec; keep the
+  conclusion, not the file dumps.
+- Launch only as many subagents as the independent work needs.
+
+## Tool Mapping
+
+- Long tasks: `run_in_background` is for work that finishes within this session (under
+  <N> minutes); longer work goes through the persistent mechanism in AGENTS.md.
+- Visual claims: open the image with the Read tool before stating anything about it.
+- Inside Orca: follow `orca-remote-bridge` for file paths, publishing results, and messages from other
+  agents.

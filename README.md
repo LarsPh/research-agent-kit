@@ -1,8 +1,9 @@
 # Research Agent Kit
 
-Platform-neutral Codex skills for evidence-driven machine-learning and graphics research. The kit supports
-existing-repository onboarding, rolling exploratory sprints, decision-complete implementation, and agent
-handoffs without assuming a particular compute platform.
+Platform-neutral skills for Codex and Claude Code in evidence-driven machine-learning and graphics research.
+The kit supports existing-repository onboarding, rolling exploratory sprints, decision-complete
+implementation, agent handoffs, rolling research ledgers, packs for external planning models, and
+desktop-to-remote agent coordination through Orca, without assuming a particular compute platform.
 
 ## Skills
 
@@ -12,6 +13,15 @@ handoffs without assuming a particular compute platform.
   while maintaining checklist and validation evidence.
 - `paper-code-bootstrap` — bootstrap an external paper repository and validate a runnable inference path.
 - `handoff` — create or consume concise cross-agent handoffs.
+- `frontline-ledger` — keep one rolling ledger per research line (decisions, open questions, tasks waiting
+  on the user, artifact paths) so chat reports only deltas.
+- `research-pack` — pack a period of multi-branch reports, diffs, and inspected visuals for an external
+  research LLM, and ingest its guidance back into the ledger.
+- `orca-remote-bridge` — let a desktop Codex/Claude app drive, question, and collect results from agents
+  in Orca terminals on a remote SSH host.
+
+`templates/` holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories that both agents
+work in; see [templates/README.md](templates/README.md).
 
 ## Recommended Installation Order
 
@@ -39,15 +49,24 @@ Restart Codex again, resume the repository initialization, and run `$setup-matt-
 The project-specific environment and compute workflow come only after repository authority is initialized
 and reviewed.
 
+For Claude Code, install the same skills with the Claude Code agent target:
+
+```fish
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger research-pack orca-remote-bridge -y --copy
+```
+
+Install `orca-remote-bridge` for the desktop app's agent as well as for the agents on the remote host;
+both roles live in the same skill.
+
 To inspect the package before installation:
 
 ```fish
 npx skills add LarsPh/research-agent-kit -l
 ```
 
-If `npx skills` is unavailable, copy only the selected folders under `skills/` into the Codex user skill
-directory. Restart Codex and verify that both names appear in the available-skill list. File presence alone
-does not prove discovery.
+If `npx skills` is unavailable, copy only the selected folders under `skills/` into the agent's user skill
+directory (for Claude Code, `~/.claude/skills/`). Restart the agent and verify that the names appear in the
+available-skill list. File presence alone does not prove discovery.
 
 ## Workflow Shape
 
