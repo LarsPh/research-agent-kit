@@ -15,6 +15,8 @@ Re-test when versions change.
 - A desktop Codex agent read card comments via `worktree ps`, got `satisfied: true` from `terminal wait`
   on a remote Claude Code terminal, and exchanged tagged one-line messages with it via
   `terminal send` / `terminal read`.
+- After the user loaded the key into the local ssh-agent, the desktop agent pulled a PNG and a Markdown
+  report with `scp -o BatchMode=yes`; the PNG arrived byte-identical (same size as on the remote host).
 - `orca computer` executes on the local desktop, not on the SSH host.
 
 ## Failed, and Why
@@ -26,5 +28,5 @@ Re-test when versions change.
 | `invalid_relative_path` | path outside the worktree, or a leading `./` | link the root into an ignored dir; drop `./` |
 | `worker-start` fails at `agent_readiness` | Claude Code waiting on its permission-mode confirmation; Codex waiting on an update notice | user handles the prompt once; skipping an update is safe to send |
 | desktop agent: `no_active_sender_terminal`, `consumer_fenced` | orchestration mailbox requires an Orca terminal identity | use terminal conversation + outbox |
-| `scp` hangs; with `BatchMode` returns `Permission denied (publickey)` although the right key is offered | inferred: key is passphrase-protected and absent from the local ssh-agent (fix not yet re-tested) | user runs `ssh-add <key>` once |
+| `scp` hangs; with `BatchMode` returns `Permission denied (publickey)` although the right key is offered | key is passphrase-protected and absent from the local ssh-agent (confirmed: after `ssh-add`, the same command succeeded) | user runs `ssh-add <key>` once |
 | Orca session search finds Codex sessions only | index covered one agent type on that host | do not rely on it for Claude history; keep decisions in the ledger |
