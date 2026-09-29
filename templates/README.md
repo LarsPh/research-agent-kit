@@ -1,7 +1,8 @@
 # Instruction Templates
 
 Starting points for a research repository that Codex and Claude Code both work in. Copy them into the
-target repository and fill them from what the repository actually contains.
+target repository; fill facts from what the repository contains and ask the user for every threshold or
+value left as a placeholder.
 
 - [AGENTS.md.template](AGENTS.md.template) — the shared file: project facts, authority order, evidence
   standards, and the checkpoints where Codex must stop and ask.

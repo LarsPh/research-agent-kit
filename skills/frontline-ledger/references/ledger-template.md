@@ -1,7 +1,6 @@
 # Ledger Template
 
-Copy this skeleton. Keep headings stable so agents and humans can grep them. Write prose in the user's or
-repository's language.
+Copy this skeleton. Keep headings stable so agents and humans can grep them.
 
 ```md
 # <Research line> ledger

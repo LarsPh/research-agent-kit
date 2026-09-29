@@ -54,7 +54,10 @@ Adapt existing documentation instead of imposing a second hierarchy. When no equ
 - `docs/research/active_direction.md`: current questions, established facts, open hypotheses, rejected
   assumptions, and the rolling frontier.
 - A concise hard-rules block in the existing `AGENTS.md` or `CLAUDE.md`. If neither exists, ask which one
-  to create, following Matt's setup rule.
+  to create, following Matt's setup rule. When both Codex and Claude Code work in the repository, use a
+  shared `AGENTS.md` plus a thin `CLAUDE.md` bridge
+  ([templates](https://github.com/LarsPh/research-agent-kit/tree/main/templates)). Ask the user for every
+  value the templates leave as a placeholder (time thresholds, stores, language).
 
 Show the complete draft and its relationship to existing docs before editing. Finish only after links and
 authority ownership are unambiguous.

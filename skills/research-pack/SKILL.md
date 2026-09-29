@@ -1,6 +1,6 @@
 ---
 name: research-pack
-description: Pack a period of multi-branch research output (reports, code diffs, visuals) into one package for an external research LLM, and ingest the guidance it sends back. Use when the user wants to send recent results to ChatGPT, Claude, Gemini, or another planning model; when several worktrees or branches must be summarized together; or when an external guidance document arrives for the agent to act on.
+description: Pack a period of multi-branch research output (reports, code diffs, visuals) into one package for an external research LLM, and ingest the guidance it sends back. Use when the user wants to send recent results to an external planning model; when several worktrees or branches must be summarized together; or when external guidance arrives for the agent to act on.
 ---
 
 # Research Pack
@@ -17,7 +17,7 @@ discuss the work from the pack alone, and its answer must come back to a known p
    per-line commit logs, diff stats and status under `lines/`, copies included files into `docs/` and
    `images/`, writes `manifest.json`, and prints the size estimate. See `--help` for flags.
 3. **Inspect visuals.** Open every image before it enters the pack. Keep the representative ones; drop
-   near-duplicates. An image the agent did not open does not go in.
+   near-duplicates.
 4. **Write the digest.** Write `digest.md` at the pack root from
    [digest-template.md](references/digest-template.md). The digest is complete when every included file is
    referenced from it and every question has the evidence it needs named beside it.

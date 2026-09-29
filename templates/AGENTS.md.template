@@ -1,7 +1,8 @@
 # Agent instructions
 
 <!-- Shared by Codex and Claude Code. Keep project facts and evidence standards here; keep procedures in
-skills. Replace every <placeholder>; delete sections that do not apply. -->
+skills. Fill facts (paths, entry points, authority order) from the repository; ask the user for every value
+and threshold (<N>, stores, language) and record the answer. Delete sections that do not apply. -->
 
 ## Project
 
@@ -41,5 +42,3 @@ ledger.
 ## Paths and Secrets
 
 - Commit no credentials, tokens, restricted data, or machine-specific absolute paths.
-- Link storage roots into an ignored directory of the worktree when files there must be opened from the
-  editor.

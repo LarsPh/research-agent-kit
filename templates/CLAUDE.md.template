@@ -27,8 +27,8 @@
 
 ## Tool Mapping
 
-- Long tasks: `run_in_background` is for work that finishes within this session (under
-  <N> minutes); longer work goes through the persistent mechanism in AGENTS.md.
+- Long tasks: `run_in_background` is for work under the long-task threshold in AGENTS.md; longer work goes
+  through the persistent mechanism named there.
 - Visual claims: open the image with the Read tool before stating anything about it.
 - Inside Orca: follow `orca-remote-bridge` for file paths, publishing results, and messages from other
   agents.

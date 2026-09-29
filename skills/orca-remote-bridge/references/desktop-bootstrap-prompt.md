@@ -1,7 +1,8 @@
 # Desktop Bootstrap Prompt
 
 The user pastes this into a desktop agent (Codex or Claude desktop app) to open a session with a remote
-Orca agent. Fill the placeholders first; `orca terminal list --json` shows handles.
+Orca agent. Fill the placeholders first; `orca terminal list --json` shows handles. The rules repeat the skill's contract
+so the prompt still works in an app where the skill is not installed.
 
 ```text
 Use $orca-remote-bridge as the desktop agent.

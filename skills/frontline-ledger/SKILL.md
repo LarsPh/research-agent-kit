@@ -1,6 +1,6 @@
 ---
 name: frontline-ledger
-description: Keep one rolling ledger per research line so chat carries only deltas. Use when a research line accumulates results, open questions, manual tasks for the user, or artifact paths across turns; when the user says things are getting lost in chat; or when the user returns and asks where a line stands.
+description: Keep one rolling ledger per research line so chat carries only deltas. Use when a research line accumulates state across turns; when the user says things are getting lost in chat; or when the user returns and asks where a line stands.
 ---
 
 # Frontline Ledger
