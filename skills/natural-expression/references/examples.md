@@ -1,27 +1,29 @@
-# 去冗边界案例
+# Natural Expression Edge Cases
 
-## 防御与真实限制
+Example text stays in its original language; the notes around it explain the judgment.
 
-构造例：“这并不是简单拼接，也不是为了追求漂亮画面，而是一个真正完整的框架。”
-处理：删去无依据评价，回到源材料中能确认的具体机制；机制信息缺失时询问，不自行补写。
+## Defensiveness versus real limits
 
-“当前评估仅覆盖两个场景，后续扩大场景范围”限定结果解释，应保留。
+Constructed example: "这并不是简单拼接，也不是为了追求漂亮画面，而是一个真正完整的框架。"
+Handling: delete the unsupported evaluation and return to the concrete mechanism the source material confirms; if the mechanism is missing, ask rather than invent it.
 
-## 排比与真实维度
+"当前评估仅覆盖两个场景，后续扩大场景范围" limits how the result should be read; keep it.
 
-“重要、关键、不可或缺”通常可合并或删除。
-“距离、视野、画质”属于不同维度，应保留，不能因恰好三项而删减。
+## Parallelism versus real dimensions
 
-## 标点与语体
+"重要、关键、不可或缺" can usually be merged or deleted.
+"距离、视野、画质" are distinct dimensions; keep all three, even though there happen to be three.
 
-正文用自然关系表达“研究名称 | 两个月 | 成果”，具体重写依已知事实。
-图中的“输入 / 输出”、正式名称中的连字符、公式与单位有实际用途，按版式保留。
+## Punctuation and register
 
-## 用户稿与改动收益
+In body text, express "研究名称 | 两个月 | 成果" through natural sentence relationships, rewriting only from known facts.
+"输入 / 输出" in a figure, hyphens inside official names, formulas, and units do real work; keep them as the layout requires.
 
-用户已确认“使用图像模型而非视频模型”，保留真实对比。
-已经简洁的“生成画像を3DGSに統合します。”可以不改；换成另一套同义表达不是必需工作。
+## User drafts and the value of an edit
 
-## 参考取舍
+The user has confirmed "使用图像模型而非视频模型", which is a real contrast; keep it.
+An already concise "生成画像を3DGSに統合します。" can stay unchanged; swapping in another set of synonyms is not required work.
 
-[Humanizer](https://github.com/blader/humanizer) 提供修辞模式的参考。本 skill 只选取与用户反复反馈相关的诊断，不使用 AI 检测分数、全面禁词或强行添加个人情绪。判断依据是信息作用与用户样例。
+## Sources behind this skill
+
+[Humanizer](https://github.com/blader/humanizer) is a reference for rhetorical patterns. This skill takes only the diagnoses that match the user's repeated feedback; it uses no AI-detection scores, blanket word bans, or forced personal emotion. Judge by what the information does and by the user's samples.

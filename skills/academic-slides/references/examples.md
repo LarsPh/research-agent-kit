@@ -1,32 +1,32 @@
-# 学术 Slides 边界案例
+# Academic Slides Edge Cases
 
-以下为抽象化示例，不构成任何具体项目的事实。
+These examples are abstracted and state no facts about any specific project. Example sentences stay in their original language; the notes around them explain the judgment.
 
-## 润色守住科学含义
+## Polishing keeps the scientific meaning
 
-- 输入意图：用图像模型生成观测，减少多帧误差累积。
-- 合适表达：使用图像生成模型，目标是抑制跨帧偏差累积。
-- 失真表达：无需训练昂贵的视频模型。
-- 判断：后者新增训练成本判断，并改变方法身份；须回到输入意图。
+- Input intent: 用图像模型生成观测，减少多帧误差累积。
+- Faithful wording: 使用图像生成模型，目标是抑制跨帧偏差累积。
+- Distorted wording: 无需训练昂贵的视频模型。
+- Judgment: the distorted wording adds a claim about training cost and changes what the method is; go back to the input intent.
 
-## 目标、观察和结论
+## Goals, observations, and conclusions
 
-“本次样例在第 3 步开始出现接缝”保留案例范围；“该方法最多支持两步”需要额外证据。
-研究因大移动实验不稳定而调整为小移动时，解释实验如何促成调整；原先目标可作为研究过程保留。
+"本次样例在第 3 步开始出现接缝" keeps the claim scoped to this case; "该方法最多支持两步" needs additional evidence.
+When the research moved from large to small camera motion because large-motion experiments were unstable, explain how the experiments led to the change; the original goal can stay as part of the research history.
 
-“可选形式有 A 与 B”应写成选项，不写成“使用 A 和 B 生成”。“效果尚待验证”保留待验证状态，不自行判断为“尚未开始验证”；动机用「狙い」表达时，不必再加泛化免责声明。
+"可选形式有 A 与 B" should read as a list of options, not as "使用 A 和 B 生成". "效果尚待验证" keeps its pending-verification status; do not turn it into "尚未开始验证". When motivation is expressed with 「狙い」, it needs no extra generic disclaimer.
 
-## 页面分工与衔接
+## Dividing content and transitions
 
-前页末：“接下来考虑构建三维所需观测的形式。”
-后页首：“可选形式包括透视图和全景图。”
-两句讨论同一对象，形成承接。若前页已自然结束，下一页可直接展开，不必额外加预告。
+End of previous slide: "接下来考虑构建三维所需观测的形式。"
+Start of next slide: "可选形式包括透视图和全景图。"
+Both sentences discuss the same object, so the second picks up the first. If the previous slide already ends naturally, the next slide can start directly with its content; no extra preview is needed.
 
-## 图文与缩时
+## Figures and cutting time
 
-连续三页展示同类结果：第一页交代输入、输出与观察重点；后两页各说明一个新增现象。不要只删连接词或要求讲者加速。
-单页成果介绍按素材比例排布，宽图和视频不必塞进三个等宽栏。放大框仅在听众需要比较具体局部时加入。
+Three consecutive slides show the same kind of result: the first introduces input, output, and what to look for; each of the other two states one new phenomenon. Cut time this way, by removing repeated explanation, rather than by trimming connectives or asking the speaker to talk faster.
+A single-slide results overview is laid out by the assets' aspect ratios; wide images and videos need not be squeezed into three equal columns. Add a zoom-in box only when the audience needs to compare a specific local region.
 
-## 审阅依据
+## Sources behind this skill
 
-主文件的组织参考 [Matt Pocock writing-for-agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) 的步骤、完成条件、单一规则来源与按需读取原则；图证对应参考 [Assertion–Evidence](https://writing.engr.psu.edu/assertion_evidence_EA.html)。不强制所有标题为结论句，也不排除 bullets。
+The main file's organization follows the steps, completion criteria, single source of truth, and on-demand reading principles of [Matt Pocock writing-for-agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents); the figure-to-claim correspondence follows [Assertion–Evidence](https://writing.engr.psu.edu/assertion_evidence_EA.html). Titles need not all be conclusion sentences, and bullets remain allowed.

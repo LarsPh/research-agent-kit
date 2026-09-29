@@ -1,4 +1,4 @@
 interface:
-  display_name: "学术 Slides 协作"
-  short_description: "按研究主线组织图文证据与台词，保护已确认修改并核验交付文件"
-  default_prompt: "用 $academic-slides 审阅这份学术报告，先指出叙事、证据与衔接问题。"
+  display_name: "Academic Slides"
+  short_description: "Build research talks with evidence-backed slides and verified files."
+  default_prompt: "Use $academic-slides to review this academic talk, starting with narrative, evidence, and transition issues."

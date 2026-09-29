@@ -2,46 +2,82 @@
 
 [中文](README.zh-CN.md) · English
 
-Agent skills for machine-learning and graphics research, covering repository onboarding, experiments, implementation, handoffs, and academic presentations. Agents inspect the target project to establish its computing environment.
+Agent skills for machine-learning and graphics research with Codex and Claude Code: repository onboarding,
+experiments, implementation, research ledgers, packs for external planning models, remote-agent
+coordination through Orca, and academic presentations. Agents inspect the target project to establish its
+computing environment.
 
-## Skills
+## How Skills Start
+
+- **You invoke it**: name the skill in your request — `$skill-name` in Codex, `/skill-name` or the skill's
+  name in Claude Code. These skills run a workflow you decide to start.
+- **It can start from context**: the agent may load the skill on its own when the conversation matches its
+  description (each description also lists a few Chinese trigger words). Automatic loading is not
+  guaranteed; name the skill when it matters.
+
+## Skills You Invoke
 
 | Skill | Purpose |
 |---|---|
 | [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | Onboard a research repository, explore code and data, analyze experiments, and maintain the next research questions |
-| [research-task-implementation](skills/research-task-implementation/SKILL.md) | Implement a research task from an agreed plan, with checklists and validation evidence |
+| [research-task-implementation](skills/research-task-implementation/SKILL.md) | Implement a research task from an agreed plan, with checklists and validation evidence; the workflow also starts it |
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | Set up a paper repository and verify a runnable inference path |
-| [handoff](skills/handoff/SKILL.md) | Create or consume cross-agent work handoffs |
-| [academic-slides](skills/academic-slides/SKILL.md) | Organize research narratives, visual evidence, and speaker notes; preserve editing boundaries and verify deliverables |
-| [natural-expression](skills/natural-expression/SKILL.md) | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
-| [japanese-expression](skills/japanese-expression/SKILL.md) | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
-| [frontline-ledger](skills/frontline-ledger/SKILL.md) | Keep one rolling ledger per research line (decisions, open questions, tasks waiting on the user, artifact paths) so chat reports only deltas |
 | [research-pack](skills/research-pack/SKILL.md) | Pack a period of multi-branch reports, diffs, and inspected visuals for an external research LLM, and ingest its guidance |
-| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
+| [academic-slides](skills/academic-slides/SKILL.md) | Organize research narratives, visual evidence, and speaker notes; preserve editing boundaries and verify deliverables |
 
-The README is available in Chinese and English. Each skill has one maintained text in its existing language. The three presentation and expression skills have Chinese instructions; the task determines the language of the output.
+## Skills That Also Start From Context
 
-[templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories that Codex and Claude Code both work in.
+| Skill | Starts when | Purpose |
+|---|---|---|
+| [frontline-ledger](skills/frontline-ledger/SKILL.md) | a research line piles up results, open questions, or pending tasks; you ask where a line stands | Keep one rolling ledger per research line so chat reports only deltas |
+| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a tagged message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
+| [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
+| [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
 
-## Install the ledger, pack, and Orca bridge skills
+[templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories
+that Codex and Claude Code both work in.
 
-These work with Codex (`-a codex`) and Claude Code (`-a claude-code`):
+## Install
+
+`-g` installs at user scope. `-a` selects the agent: `codex` or `claude-code`.
+
+Research-code workflow:
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
+```
+
+In a new session that recognizes the skills, initialize the target repository explicitly:
+
+```text
+Use $zhaorong-research-workflow to initialize this existing research repository. Audit it and draft the repository workflow first; stop before configuring the project environment.
+```
+
+The workflow checks for Matt Pocock's engineering skills. If they are missing, review the workflow's
+explanation of the dependencies, then install them:
+
+```sh
+npx skills add mattpocock/skills -g -a codex -s '*' -y --copy
+```
+
+Resume initialization and run `$setup-matt-pocock-skills` when prompted. Establish the project rules and
+workflow before configuring the environment and compute jobs.
+
+Ledger, pack, and Orca bridge:
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger research-pack orca-remote-bridge -y --copy
 ```
 
-Install `orca-remote-bridge` both for the desktop app's agent and for the agents on the remote host; both roles live in the same skill.
+Install `orca-remote-bridge` both for the desktop app's agent and for the agents on the remote host; both
+roles live in the same skill.
 
-## Install the presentation and expression skills
-
-Install these three modules together:
+Presentation and expression (install together; `academic-slides` reads the expression skills by relative
+reference, and layout-only edits load neither):
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
 ```
-
-For writing tasks, `academic-slides` reads `natural-expression` and also reads `japanese-expression` when the text is Japanese. Layout-only edits do not load language modules. The language modules can also be used independently. This group does not require the research-code workflow.
 
 Example requests:
 
@@ -51,41 +87,12 @@ Use $natural-expression to edit this prose, preserving its meaning while reducin
 Use $japanese-expression to revise these Japanese speaker notes, preserving sentence connections and the scope of research claims.
 ```
 
-## Install the research-code workflow
+List the available skills before installing with `npx skills add LarsPh/research-agent-kit -l`. If
+`npx skills` is unavailable, copy the selected folders under `skills/` into the agent's user skill directory
+(for Claude Code, `~/.claude/skills/`). After installation, confirm the names in the agent's available-skill
+list, in a new session if the list has not refreshed. Files on disk alone do not prove discovery.
 
-Start with the workflow and implementation modules:
-
-```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
-```
-
-In a new session that recognizes the skills, explicitly initialize the target repository:
-
-```text
-Use $zhaorong-research-workflow to initialize this existing research repository. Audit it and draft the repository workflow first; stop before configuring the project environment.
-```
-
-The workflow checks for Matt Pocock's engineering skills. If they are missing, review the workflow's explanation of the dependencies, then install them:
-
-```sh
-npx skills add mattpocock/skills -g -a codex -s '*' -y --copy
-```
-
-Resume initialization and run `$setup-matt-pocock-skills` when prompted. Establish the project rules and workflow before configuring the environment and compute jobs.
-
-## Inspect and verify installation
-
-List the available skills before installing:
-
-```sh
-npx skills add LarsPh/research-agent-kit -l
-```
-
-`-g` installs at user scope; `-a codex` selects Codex. If `npx skills` is unavailable, copy the selected folders under `skills/` into the target agent's user skill directory. Copy the presentation and expression modules together to preserve their relative references.
-
-After installation, confirm the names in the target agent's available-skill list. If the list has not refreshed, check in a new session. Files on disk alone do not prove discovery.
-
-## Research workflow
+## Research Workflow
 
 1. Discuss the next research question and update the directions to explore.
 2. Select a bounded exploration task or an implementation task with an agreed plan.
@@ -93,8 +100,12 @@ After installation, confirm the names in the target agent's available-skill list
 4. Analyze observations, confounds, and claim boundaries.
 5. Use the evidence to continue, pivot, defer, reject, or move into implementation and review.
 
-Store raw outputs and checkpoints in the project's persistent artifact storage. Keep reviewed analysis and representative evidence in the repository.
+Store raw outputs and checkpoints in the project's persistent artifact storage. Keep reviewed analysis and
+representative evidence in the repository.
 
-## Project data and public boundaries
+## Project Data and Public Boundaries
 
-This repository holds reusable workflows and abstract examples. Machine configuration, job commands, mounts, data paths, credentials, and internal policies belong in the relevant private project. Research facts, current terminology, and agreed decisions for a presentation also remain in the project's own materials.
+This repository holds reusable workflows and abstract examples. Machine configuration, job commands,
+mounts, data paths, credentials, and internal policies belong in the relevant private project. Research
+facts, current terminology, and agreed decisions for a presentation also remain in the project's own
+materials.

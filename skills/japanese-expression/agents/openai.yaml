@@ -1,4 +1,4 @@
 interface:
-  display_name: "日语表达偏好"
-  short_description: "区分页面文字和口头台词，调整日语主语、指代、连接与朗读节奏"
-  default_prompt: "用 $japanese-expression 润色这段日语台词，保持原意和自然连接。"
+  display_name: "Japanese Expression"
+  short_description: "Tune Japanese subjects, linking, register, and read-aloud rhythm."
+  default_prompt: "Use $japanese-expression to polish this Japanese talk script, keeping its meaning and natural connections."

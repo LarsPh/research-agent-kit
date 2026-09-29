@@ -1,6 +1,6 @@
 ---
 name: paper-code-bootstrap
-description: Set up newly cloned research/paper code repositories into runnable uv-based inference environments. Use when Codex needs to convert README/requirements install instructions into pyproject.toml or uv workflows, install and validate dependencies including CUDA extensions, download checkpoints/models/config assets, and smoke-test an inference/demo command on an appropriate GPU node.
+description: Set up newly cloned research/paper code repositories into runnable uv-based inference environments. Use when an agent needs to convert README/requirements install instructions into pyproject.toml or uv workflows, install and validate dependencies including CUDA extensions, download checkpoints/models/config assets, and smoke-test an inference/demo command on an appropriate GPU node.
 ---
 
 # Paper Code Bootstrap

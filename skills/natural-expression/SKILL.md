@@ -1,41 +1,41 @@
 ---
 name: natural-expression
-description: 去 AI 感、去冗与语气校准；在撰写或润色 slides、台词、正文、邮件和申请材料时，按用户样例处理模板句式、无效排比、防御写作与标点堆叠。
+description: Strip AI-sounding patterns and redundancy from prose and calibrate its tone, handling template phrasing, empty parallelism, defensive writing, and stacked punctuation against the user's own samples. Use when writing or polishing slide text, speaker scripts, body text, emails, or application materials; or when the user says text reads as templated, padded, or machine-written. Triggers include 润色, 去 AI 感, AI 味, 去冗, 语气.
 ---
 
-# 表达去冗与语气校准
+# Natural Expression
 
-## 1. 确定表达用途
+## 1. Identify each text's purpose
 
-沿用用户的成稿语言、样例与修改边界。区分同一任务中的不同文本：
+Keep the user's target language, samples, and edit boundaries. Within one task, tell apart the different kinds of text:
 
-| 用途 | 保留的表达形式 |
+| Purpose | Form to keep |
 |---|---|
-| 标题、bullet、图注 | 简短短语、名词结构、必要并列，方便扫读 |
-| 口头台词 | 自然句子、适当连接、必要引导，方便听懂 |
-| 书面正文 | 完整段落、明确逻辑，语气按场景调整 |
+| Titles, bullets, captions | Short phrases, noun structures, needed parallel items; built for scanning |
+| Spoken script | Natural sentences, fitting connectives, needed signposting; built for listening |
+| Written body text | Full paragraphs, explicit logic, tone matched to the setting |
 
-完成条件：每段的用途和允许修改程度明确。已有自然表达可以原样保留。
+Done when each passage's purpose and allowed degree of change are clear. Text that already reads naturally can stay as it is.
 
-## 2. 按信息作用修改
+## 2. Edit by what each piece of information does
 
-优先处理整段信息关系，再改词句。保留事实、因果、范围、比较维度和作者立场；缺少的事实询问或留待核实。
+Work on how information relates across the whole passage first, then on words and sentences. Keep facts, causality, scope, comparison dimensions, and the author's stance; ask about missing facts or mark them for verification.
 
-| 检查对象 | 修改目标与保留条件 |
+| Pattern | Edit target and what to keep |
 |---|---|
-| 防御写作 | 直接说明事实，去掉无关的自我辩解；保留影响结论的条件、限制及真实备选分析 |
-| 空泛评价 | 用已有的具体内容表达贡献，删除无依据的意义拔高 |
-| 无效排比 | 合并同义项；真实的多个维度、步骤或结果照常列出 |
-| 模板句式 | 删除无信息增量的设问自答、对比、预告和总结；保留真正的比较与必要引导 |
-| 标点堆叠 | 用清楚的关系组织正文；标签、技术名称、单位、引用所需符号保留 |
-| 编辑痕迹 | 成稿只保留面向读者的内容；工作指令、待确认问题另行沟通 |
+| Defensive writing | State the fact directly and drop self-justification that bears on nothing; keep conditions and limits that affect the conclusion, and genuine analysis of alternatives |
+| Empty evaluation | Express the contribution through the concrete content already present; delete unsupported claims of significance |
+| Empty parallelism | Merge synonymous items; list real multiple dimensions, steps, or results as usual |
+| Template phrasing | Delete rhetorical question-then-answer, "not X but Y" contrasts (不是……而是……), previews (接下来我们将……), and summaries that add no information; keep real comparisons and needed signposting |
+| Stacked punctuation | Organize body text through clear sentence relationships instead of chains of dashes, bars, and colons (——, ｜, ：); keep symbols that labels, technical names, units, and citations need |
+| Editing residue | The final text holds only reader-facing content; raise working instructions and open questions separately with the user |
 
-对比、三项列举或某个标点单独出现，不构成修改理由。遇到保留与删除难以判断，读 [边界案例](references/examples.md)。
+A contrast, a three-item list, or a punctuation mark on its own is no reason to edit. When keeping versus deleting is hard to call, read [edge cases](references/examples.md).
 
-完成条件：每处改动能解释其信息或阅读收益，而非仅换同义词；省略内容不造成事实损失或论断升级。
+Done when every edit can be justified by an information or readability gain, beyond swapping synonyms, and nothing omitted loses a fact or inflates a claim.
 
-## 3. 核对后输出
+## 3. Check, then deliver
 
-检查删冗后是否失去必要连接、是否误改用户习惯。日语的主语与句法由 [japanese-expression](../japanese-expression/SKILL.md) 处理；单独使用本 skill 时，写作或改写日语须读取该模块。模块缺失则说明，不声称完成其检查。
+Check that removing redundancy kept the needed connections and left the user's habits intact. [japanese-expression](../japanese-expression/SKILL.md) owns Japanese subjects and syntax; when this skill runs on its own and the text is Japanese, read that skill before writing or rewriting. If it is missing, say so and report its checks as not run.
 
-默认返回任务需要的成稿及关键变化，不固定输出打分、多轮草稿或完整检查清单。文件任务依用户要求写回；嵌入其他任务时遵守主任务的交付方式。
+Return the finished text the task needs plus the key changes; give scores, multiple drafts, or a full checklist only when asked. For file tasks, write back as the user requests; when embedded in another task, follow that task's delivery format.

@@ -1,6 +1,6 @@
 ---
 name: research-pack
-description: Pack a period of multi-branch research output (reports, code diffs, visuals) into one package for an external research LLM, and ingest the guidance it sends back. Use when the user wants to send recent results to an external planning model; when several worktrees or branches must be summarized together; or when external guidance arrives for the agent to act on.
+description: Pack a period of multi-branch research output (reports, code diffs, visuals) into one package for an external research LLM, and ingest the guidance it sends back. Use when the user wants to send recent results to an external planning model; when several worktrees or branches must be summarized together; or when external guidance arrives for the agent to act on. Triggers include 打包, 发给 GPT, 回传包.
 ---
 
 # Research Pack
