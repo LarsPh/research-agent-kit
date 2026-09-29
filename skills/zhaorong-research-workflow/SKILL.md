@@ -1,6 +1,6 @@
 ---
 name: zhaorong-research-workflow
-description: "Adaptive research-sprint orchestration for existing ML and graphics repositories. Use when Codex needs to initialize agent workflow in a migrated or legacy research repo, explore a codebase with new data and visual diagnostics, turn research discussion into a rolling bite-sized plan, analyze experiment evidence and revise direction, or run a formal implementation and review sprint without freezing the full roadmap."
+description: "Adaptive research-sprint orchestration for existing ML and graphics repositories. Use to initialize agent workflow in a migrated or legacy research repo, explore a codebase with new data and visual diagnostics, turn research discussion into a rolling bite-sized plan, analyze experiment evidence and revise direction, or run a formal implementation and review sprint without freezing the full roadmap."
 ---
 
 # Zhaorong Research Workflow

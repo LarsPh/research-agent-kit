@@ -15,8 +15,23 @@ Agent skills for machine-learning and graphics research, covering repository onb
 | [academic-slides](skills/academic-slides/SKILL.md) | Organize research narratives, visual evidence, and speaker notes; preserve editing boundaries and verify deliverables |
 | [natural-expression](skills/natural-expression/SKILL.md) | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
+| [frontline-ledger](skills/frontline-ledger/SKILL.md) | Keep one rolling ledger per research line (decisions, open questions, tasks waiting on the user, artifact paths) so chat reports only deltas |
+| [research-pack](skills/research-pack/SKILL.md) | Pack a period of multi-branch reports, diffs, and inspected visuals for an external research LLM, and ingest its guidance |
+| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
 
 The README is available in Chinese and English. Each skill has one maintained text in its existing language. The three presentation and expression skills have Chinese instructions; the task determines the language of the output.
+
+[templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories that Codex and Claude Code both work in.
+
+## Install the ledger, pack, and Orca bridge skills
+
+These work with Codex (`-a codex`) and Claude Code (`-a claude-code`):
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger research-pack orca-remote-bridge -y --copy
+```
+
+Install `orca-remote-bridge` both for the desktop app's agent and for the agents on the remote host; both roles live in the same skill.
 
 ## Install the presentation and expression skills
 

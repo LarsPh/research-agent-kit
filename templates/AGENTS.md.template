@@ -1,0 +1,44 @@
+# Agent instructions
+
+<!-- Shared by Codex and Claude Code. Keep project facts and evidence standards here; keep procedures in
+skills. Fill facts (paths, entry points, authority order) from the repository; ask the user for every value
+and threshold (<N>, stores, language) and record the answer. Delete sections that do not apply. -->
+
+## Project
+
+- Goal: <one or two sentences on the research goal and what counts as success>.
+- Authority order: <e.g. docs/research/active_direction.md > accepted reports > older overviews>.
+- Before work: read <docs entry point>, <direction document>, the line's ledger, and `git status`.
+- Language: <language for plans, analyses, and chat>.
+
+## Evidence Standards
+
+- Separate code facts, observations, interpretations, hypotheses, proposed methods, and conclusions.
+- Smoke runs and reduced paths are engineering evidence only; label them and list what they omit.
+- Open and inspect representative images before any spatial, rendering, or visual claim.
+- Raw outputs, logs, caches, and checkpoints stay in <persistent store>; Git holds reviewed analysis and
+  representative evidence.
+- Report `completed`, `not done`, `skipped`, `deferred`, and `blocked` items explicitly.
+
+## Stop and Ask
+
+<!-- The Codex patch: its default is to keep going until the task is resolved. Name the checkpoints. -->
+
+Stop and ask the user before:
+
+- choosing between research directions, methods, or baselines;
+- changing model, data, loss, training, or evaluation semantics beyond the written plan;
+- creating environments, downloading large models, or launching GPU or paid jobs;
+- promoting an exploration result to a decision, default, or milestone.
+
+Decide engineering details yourself (file layout, helper names, test scaffolding) and record them in the
+ledger.
+
+## Long Tasks
+
+- Start any task expected to exceed <N> minutes through <the repository's persistent session mechanism>,
+  verify it once (session, live process, `running` status on disk), then report the expected finish time.
+
+## Paths and Secrets
+
+- Commit no credentials, tokens, restricted data, or machine-specific absolute paths.

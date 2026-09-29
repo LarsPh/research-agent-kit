@@ -15,8 +15,23 @@
 | [academic-slides](skills/academic-slides/SKILL.md) | 组织学术叙事、图文证据与台词，保护改稿边界并核验交付 |
 | [natural-expression](skills/natural-expression/SKILL.md) | 按页面文字、口头稿和正文的用途去冗，减少模板表达 |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | 调整日语主语省略、指代、句间连接与朗读节奏 |
+| [frontline-ledger](skills/frontline-ledger/SKILL.md) | 每条研究线维护一份滚动台账（决定、未决问题、等用户处理的事、产物路径），对话只报增量 |
+| [research-pack](skills/research-pack/SKILL.md) | 把一段时间内多分支的报告、diff 和已检查的图打包给外部研究 LLM，并接收其回传的指导 |
+| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | 让桌面端 Codex/Claude app 驱动、询问远端 SSH 主机上 Orca 终端里的 agent，并拉回结果 |
 
 README 提供中英两版；每个 skill 只维护一份正文，按其用途保留现有语言。三个报告与表达 skills 使用中文说明，成稿语言按任务决定。
+
+[templates/](templates/README.md) 提供两边共用的 `AGENTS.md` 和很薄的 `CLAUDE.md` 桥接模板，适用于 Codex 与 Claude Code 同时工作的仓库。
+
+## 安装台账、打包与 Orca 桥接 skills
+
+Codex（`-a codex`）和 Claude Code（`-a claude-code`）均可使用：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger research-pack orca-remote-bridge -y --copy
+```
+
+`orca-remote-bridge` 需要同时装给桌面 app 的 agent 和远端主机上的 agent；两种角色在同一个 skill 里。
 
 ## 安装报告与表达 skills
 

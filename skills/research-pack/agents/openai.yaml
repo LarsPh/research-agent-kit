@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Pack"
+  short_description: "Pack multi-branch research output for an external LLM."
+  default_prompt: "Use $research-pack to pack recent multi-branch results for external research discussion."
