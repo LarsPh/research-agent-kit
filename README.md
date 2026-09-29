@@ -12,8 +12,8 @@ computing environment.
 - **You invoke it**: name the skill in your request — `$skill-name` in Codex, `/skill-name` or the skill's
   name in Claude Code. These skills run a workflow you decide to start.
 - **It can start from context**: the agent may load the skill on its own when the conversation matches its
-  description (each description also lists a few Chinese trigger words). Automatic loading is not
-  guaranteed; name the skill when it matters.
+  description; each description also lists a few Chinese keywords so Chinese conversations match too.
+  Automatic loading does not always happen; name the skill when it matters.
 
 ## Skills You Invoke
 
@@ -23,14 +23,14 @@ computing environment.
 | [research-task-implementation](skills/research-task-implementation/SKILL.md) | Implement a research task from an agreed plan, with checklists and validation evidence; the workflow also starts it |
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | Set up a paper repository and verify a runnable inference path |
 | [research-pack](skills/research-pack/SKILL.md) | Pack a period of multi-branch reports, diffs, and inspected visuals for an external research LLM, and ingest its guidance |
-| [academic-slides](skills/academic-slides/SKILL.md) | Organize research narratives, visual evidence, and speaker notes; preserve editing boundaries and verify deliverables |
+| [academic-slides](skills/academic-slides/SKILL.md) | Shape a talk's storyline, figure evidence, and speaker script; change only what the user allows and check the final files |
 
 ## Skills That Also Start From Context
 
 | Skill | Starts when | Purpose |
 |---|---|---|
-| [frontline-ledger](skills/frontline-ledger/SKILL.md) | a research line piles up results, open questions, or pending tasks; you ask where a line stands | Keep one rolling ledger per research line so chat reports only deltas |
-| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a tagged message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
+| [frontline-ledger](skills/frontline-ledger/SKILL.md) | a research line piles up results, open questions, or pending tasks; you ask where a line stands | Keep one running ledger per research line so chat reports only what changed |
+| [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
 | [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
 
