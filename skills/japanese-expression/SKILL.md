@@ -1,34 +1,34 @@
 ---
 name: japanese-expression
-description: 日语表达校准；撰写、翻译或润色日语 slides、演讲台词、正文及邮件时，处理主语省略、指代、句间连接、语体和朗读节奏。
+description: Calibrate Japanese expression, handling subject omission, reference words, sentence linking, register, and read-aloud rhythm. Use when writing, translating into, or polishing Japanese slides, talk scripts, body text, or emails. Triggers include 日语润色, 日语台词, 翻成日语, 敬语.
 ---
 
-# 日语表达偏好
+# Japanese Expression
 
-## 1. 选择语体
+## 1. Choose the register
 
-按文本用途处理，用户样例与明确修订优先：
+Handle text by its purpose; the user's samples and explicit revisions take precedence:
 
-| 用途 | 默认方式 |
+| Purpose | Default form |
 |---|---|
-| Slides 标题、bullet、图注 | 可用体言止め和省略，同层级形式一致 |
-| 演讲台词 | 自然的「です・ます」体，保留必要连接与呼吸停顿 |
-| 论文、报告、邮件正文 | 按场景选择文体、敬语与完整段落 |
+| Slide titles, bullets, captions | 体言止め (ending on a noun) and omissions are fine; keep items at the same level in the same form |
+| Talk script | Natural です・ます form, keeping needed connectives and breathing pauses |
+| Paper, report, or email body | Choose style, honorifics, and full paragraphs to fit the setting |
 
-完成条件：已区分页面文字和口头稿。将 bullet 转为台词时，恢复必要关系和谓语，不逐项机械加「です」。
+Done when slide text and spoken script are distinguished. When turning bullets into a script, restore the needed relationships and predicates rather than appending です to each item.
 
-## 2. 保持话题连续
+## 2. Keep the topic continuous
 
-- 同一主体连续行动时自然省略主语；主体变化、贡献归属或比较对象可能不清时明确写出。「私たち」「本研究では」用于确有必要的定位。
-- 指代清楚且自然时保留「この／その／これら」；有多个可能指向时写具体对象。以实际信息衔接，减少连续重复的指代开头。
-- 用因果、对比、条件和顺序连接句子。同一动作链适当连接；多个论点造成长句负担时拆分。避免把完整意思切成无连接的短句，也避免连续堆接续形式。
-- 使用领域内自然、容易说出口的表达，减少绕远的名词化。同一术语稳定使用，具体称呼按项目当前约定。
-- 台词用直接陈述推进，不默认用疑问句转场；互动提问按任务需要安排。
+- Omit the subject naturally while the same agent keeps acting; state it when the agent changes, or when attribution of a contribution or the object of a comparison could be unclear. Use 「私たち」 or 「本研究では」 where positioning is actually needed.
+- Keep 「この／その／これら」 when the referent is clear and the phrasing natural; name the concrete object when more than one referent is possible. Link sentences through actual information, so consecutive sentences rarely open with the same reference word.
+- Connect sentences by cause, contrast, condition, and sequence. Link a single chain of actions; split when several points make one sentence heavy. Keep a complete thought in connected sentences instead of chopping it into unlinked fragments, and keep chains of continuative forms (〜し、〜て) short.
+- Use expressions that are natural in the field and easy to say aloud, preferring verbs to roundabout nominalizations. Use each term consistently, with names following the project's current conventions.
+- Advance the script with direct statements; use questions as transitions only when the task calls for audience interaction.
 
-完成条件：连读整段能判断谁做什么、句间是什么关系，连接词与逻辑相符，且保留原意和结论强度。遇到主语、短句与语体之间的取舍，读 [边界案例](references/examples.md)。
+Done when reading the whole passage straight through shows who does what and how sentences relate, the connectives match the logic, and the original meaning and strength of each conclusion survive. For trade-offs among subjects, short sentences, and register, read [edge cases](references/examples.md).
 
-## 3. 检查节奏与显示
+## 3. Check rhythm and display
 
-台词检查重复起句、单调句尾与念列表感。Notes 按语义或呼吸换行，可一句一段、长句中途换行；换行不改变句法，不自动加句号。书面正文按内容分段，不套用提词稿格式。
+In scripts, check for repeated sentence openings, monotonous sentence endings, and a read-off-a-list feel. Break lines in notes at meaning or breath boundaries: one sentence per paragraph, or a break inside a long sentence. A line break leaves the syntax intact, and the sentence continues across it without an added 。. Paragraph written body text by content, without teleprompter formatting.
 
-完成条件：修改符合指定用途与范围；既能顺读，也没有为追求顺口改变技术关系。按主任务交付，默认只给成稿及必要说明。
+Done when the edit fits the specified purpose and scope, reads smoothly, and keeps every technical relationship intact. Deliver in the host task's format; by default give only the finished text and necessary notes.

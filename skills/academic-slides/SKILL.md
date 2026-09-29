@@ -1,50 +1,50 @@
 ---
 name: academic-slides
-description: 学术 slides 的构思、制作、改稿与审阅；处理研究叙事、图文证据、台词、跨页衔接和演讲时长。适用于会议、组会、答辩和成果介绍，配合演示文稿工具使用。
+description: Plan, build, revise, and review academic slide decks, covering research narrative, figure evidence, speaker scripts, slide-to-slide transitions, and talk timing. Use when preparing a conference talk, lab-meeting report, thesis defense, or results presentation; when editing an existing deck or its speaker script; or when reviewing a deck's story and evidence. Triggers include slides, 组会报告, 答辩, 台词.
 ---
 
-# 学术 Slides 协作
+# Academic Slides
 
-默认用中文协作；成稿语言按报告要求。沿用用户的最新文件、手动修改和已确认表达，项目中的新决定优先于本 skill。
+Collaborate in the user's language; the deck's language follows the talk's requirements. Build on the user's latest file, manual edits, and confirmed wording; newer project decisions override this skill.
 
-## 1. 确定任务与基准
+## 1. Fix the task and the baseline
 
-从现有上下文取得听众、时长、语言、最新 master 和修改范围，只询问影响判断的缺项。“分析／先讨论”给方案；“改／应用／写入”修改实际文件。用户原稿只修明确语病、待译片段及指定问题。
+Take the audience, duration, language, latest master file, and edit scope from existing context; ask only for gaps that change a judgment. When the user asks to analyze or discuss first (分析, 先讨论), deliver a proposal; when they ask to edit, apply, or write (改, 应用, 写入), modify the actual file. In the user's own draft text, fix only clear errors, passages marked for translation, and the issues the user named.
 
-完成条件：能指出当前基准及本轮允许改变的内容。对科研含义的疑问给出具体问题，继续完成不依赖该答案的部分；普通排版自行处理。
+Done when you can name the current baseline file and what this round may change. For a doubt about scientific meaning, ask a specific question and keep working on the parts that do not depend on the answer; decide routine layout yourself.
 
-## 2. 安排内容与证据
+## 2. Arrange content and evidence
 
-新建或重构时，为每页确定听众应理解的要点、支持它的证据和出现顺序。局部修改只检查该页及受影响的前后页。
+When building or restructuring, decide for each slide the point the audience should take away, the evidence that supports it, and the order they appear in. For a local edit, check only that slide and the slides before and after it that the edit affects.
 
-- 按报告目的组织主线。探索型报告可按问题分块，块内讲动机、方法、结果及剩余问题；会议报告突出贡献，答辩突出研究间关系。
-- 新操作先交代要解决的问题；已知动机不重复。相似结果先解释观看方式，后续只说新增发现。
-- 分清比较维度，保持模型关系、输入输出、数据范围和指标口径一致。保留选项与实际采用方案的区别，以及实验状态的精确含义。
-- 准确区分目标、动机、观察、已验证结论和未来计划。单例观察限于该案例；有依据的成果直接报告。数值冲突先核实。
-- 根据要观察的现象选择真实素材。标清输入、条件、输出、GT 和方法；对比视角、尺度与裁切保持可比。科学结果不得通过美化改变证据。
-- 依素材比例安排空间，保留现有设计。箭头、放大框和颜色服务于明确的观察任务。引用采用本报告的简洁格式。
+- Organize the storyline by the talk's purpose. An exploratory report can be split into problem blocks, each covering motivation, method, results, and remaining questions; a conference talk foregrounds contributions; a defense foregrounds how the studies relate.
+- Introduce each new operation with the problem it solves; skip motivation the audience already has. For a series of similar results, explain how to read the first one, then state only what each later one adds.
+- Separate the dimensions being compared, and keep model relationships, inputs and outputs, data scope, and metric definitions consistent. Keep the distinction between options considered and the approach actually adopted, and keep the exact meaning of each experiment's status.
+- Label goals, motivation, observations, verified conclusions, and future plans as what they are. A single-case observation stays scoped to that case; report well-supported results directly. Verify conflicting numbers before using either.
+- Choose real material that shows the phenomenon to observe. Label input, conditions, output, GT, and method; keep viewpoint, scale, and cropping comparable across compared images. Present scientific results as they are: visual polish leaves the evidence unchanged.
+- Lay out space by each asset's aspect ratio and keep the existing design. Arrows, zoom-in boxes, and colors each serve a specific observation task. Format citations in the deck's existing concise style.
 
-完成条件：改动没有扩大论断，图能支持本页要点，前后页没有无作用的重复。拿不准“润色是否改了科研含义”、页间分工或缩时方式时，读 [边界案例](references/examples.md)。
+Done when no edit widens a claim, each figure supports its slide's point, and adjacent slides carry no repetition that does no work. When unsure whether polishing changed the scientific meaning, how to divide content between slides, or how to cut time, read [edge cases](references/examples.md).
 
-## 3. 写页面文字与台词
+## 3. Write slide text and speaker script
 
-写作或润色时，读取 [natural-expression](../natural-expression/SKILL.md)；遇到日语，再读取 [japanese-expression](../japanese-expression/SKILL.md)。按名称定位已安装模块；同仓库可用上述相对路径。模块缺失时明确说明，不声称已执行其检查。纯布局修改无需加载语言模块。
+When writing or polishing text, read [natural-expression](../natural-expression/SKILL.md); when the text is Japanese, also read [japanese-expression](../japanese-expression/SKILL.md). Locate installed skills by name; within this repository the relative paths above work. If a skill is missing, say so and report its checks as not run. Pure layout edits need neither skill.
 
-传入文本用途、相关页面上下文、允许改动范围及必须保留的意思。按两个模块共同约束完成一次修改，避免反复全文重写。
+Hand them the text's purpose, the surrounding slide context, the allowed edit scope, and the meaning that must survive. Apply both skills' constraints in a single pass over the text.
 
-页面文字负责扫读，台词负责解释动机、证据和连接；二者语义一致，措辞可以不同。参考提醒可留在页面而不口述。标题与章节页保持简短。
+Slide text serves scanning; the speaker script explains motivation, evidence, and connections. The two agree in meaning and may differ in wording. Reference reminders can stay on the slide without being spoken. Keep titles and section slides short.
 
-完成条件：逐对连读受影响页面的真实末句与首句，确认讨论对象承接、概念已引入；无需强加预告。涉及衔接审阅时，在回复中列出实际句对及判断。
+Done when you have read, pair by pair, the actual last sentence of each affected slide against the first sentence of the next, and confirmed that the topic carries over and each concept is introduced before use; a transition needs no forced preview. When the task includes reviewing transitions, list the actual sentence pairs and your verdict on each in the reply.
 
-## 4. 写回与核验
+## 4. Write back and verify
 
-仅讨论或审阅时，交付具体建议及尚待核实的问题，在此结束；以下用于已获授权的文件修改。制作或编辑文件前，读取当前环境对应的演示文稿工具说明。
+For discussion or review only, deliver concrete suggestions and the questions still to verify, and stop here; the rest of this step covers authorized file edits. Before creating or editing the file, read the instructions for the presentation tool available in the current environment.
 
-修改前简述具体改动；从最新 master 写回，检查差异，保留无关的手动调整。按风险核验最终交付文件：
+State the specific changes before making them; write back from the latest master, inspect the diff, and preserve unrelated manual adjustments. Verify the final delivered file in proportion to risk:
 
-- 内容：从文件提取改后文字与 notes，核对确认稿及相关标签。整稿台词任务检查封面、章节页、结尾页是否缺稿。
-- 视觉：渲染受影响页面，检查溢出、遮挡、对齐和图注对应。
-- 媒体：涉及视频或动画时检查真实播放、触发方式及前后翻页；仅截图或结构检查不能宣称播放验证通过。
-- 时长：分别估算讲述及必要的翻页、视频停留，避免重复计时。录音排除评论、重录等非演讲内容。超时优先删重复讲解和非必要样例，再调整措辞。
+- Content: extract the edited text and notes from the file and check them against the confirmed draft and relevant labels. For a full-deck script task, check that the title, section, and closing slides each have a script.
+- Visuals: render the affected slides and check for overflow, occlusion, alignment, and caption-to-figure correspondence.
+- Media: for video or animation, check real playback, the trigger, and paging forward and back. A screenshot or structure check supports only a claim of that check, not of playback.
+- Timing: estimate speaking time separately from the paging and video dwell time the talk needs, counting each once. When timing from a recording, exclude commentary, retakes, and other non-talk audio. To cut an overrun, remove repeated explanation and non-essential examples first, then adjust wording.
 
-完成条件：交付所链接的文件就是核验版本。简述改动与验证结果；未能验证的项目明确指出，不用笼统“全部检查通过”代替证据。
+Done when the file you link is the version you verified. Summarize the changes and verification results; name each item you could not verify, backing every pass with its evidence rather than a blanket "all checks passed".

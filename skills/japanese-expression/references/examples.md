@@ -1,31 +1,33 @@
-# 日语边界案例
+# Japanese Expression Edge Cases
 
-## 页面文字与台词
+Example text stays in Japanese; the notes around it explain the judgment.
 
-页面 bullet：生成パノラマの3DGSへの統合
-台词：生成したパノラマを3DGSに統合し、レンダリング結果の画質を確認します。
-台词仅在确有画质检查这一内容时使用，不能为完整句法新增任务。
+## Slide text versus script
 
-## 省略主语而保留关系
+Slide bullet: 生成パノラマの3DGSへの統合
+Script: 生成したパノラマを3DGSに統合し、レンダリング結果の画質を確認します。
+Use this script only when an image-quality check is actually part of the content; completing the syntax must not add a task.
 
-构造例：私たちは画像を生成します。この画像を3DGSに統合します。その結果の画質を確認します。
-修改：生成した画像を3DGSに統合し、レンダリング結果の画質を確認します。
-同一动作链可以连接；如果分属两页、两项不同实验，则根据上下文分别解释。
+## Omitting the subject while keeping the relationship
 
-## 必须保留的指代和限定
+Constructed example: 私たちは画像を生成します。この画像を3DGSに統合します。その結果の画質を確認します。
+Revision: 生成した画像を3DGSに統合し、レンダリング結果の画質を確認します。
+A single chain of actions can be linked; if the steps belong to two slides or two different experiments, explain each separately according to context.
 
-原因刚刚明确时，「そのため」自然表达因果，可保留。
-「誤差の蓄積を抑える狙いです」表达动机，不能润色为「誤差の蓄積を抑えます」来暗示已验证效果。
+## Reference words and qualifiers to keep
 
-## 换行与句法
+Right after the cause has been stated, 「そのため」 expresses causality naturally and can stay.
+「誤差の蓄積を抑える狙いです」 expresses motivation; keep it rather than polishing it into 「誤差の蓄積を抑えます」, which implies a verified effect.
 
-提词稿可以写成：
+## Line breaks and syntax
+
+A teleprompter script can be written as:
 
 > 生成した画像を3DGSに統合し、
 > レンダリング結果の画質を確認します。
 
-换行保留「し、」的连接，不拆为两项孤立判断。书面报告可使用同一句而不换行。
+The break keeps the 「し、」 connection instead of splitting the sentence into two isolated statements. A written report can use the same sentence without the break.
 
-## 参考取舍
+## Sources behind this skill
 
-参考文化庁 [公用文作成の考え方](https://www.bunka.go.jp/seisaku/bunkashingikai/kokugo/hokoku/pdf/93651301_01.pdf) 的读者意识、主谓对应和清楚指代；口头稿采用用户的实读偏好，不机械套用公文句长或语气。
+Follows the reader awareness, subject–predicate agreement, and clear reference of the Agency for Cultural Affairs' [公用文作成の考え方](https://www.bunka.go.jp/seisaku/bunkashingikai/kokugo/hokoku/pdf/93651301_01.pdf); spoken scripts follow the user's read-aloud preferences instead of official-document sentence length and tone.

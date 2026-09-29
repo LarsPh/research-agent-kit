@@ -1,6 +1,6 @@
 ---
 name: orca-remote-bridge
-description: Orca bridge between a local desktop agent (Codex or Claude app) and coding agents in remote Orca terminals over SSH. Use when a desktop agent drives, questions, or collects results from a remote Orca agent; when a remote Orca agent publishes results or opens files in the Orca editor; or when a tagged message from another agent arrives in the terminal.
+description: Orca bridge between a local desktop agent (Codex or Claude app) and coding agents in remote Orca terminals over SSH. Use when a desktop agent drives, questions, or collects results from a remote Orca agent; when a remote Orca agent publishes results or opens files in the Orca editor; or when a tagged message from another agent arrives in the terminal. Triggers include 桌面端, 远端 agent, 拉文件, 回传.
 ---
 
 # Orca Remote Bridge
