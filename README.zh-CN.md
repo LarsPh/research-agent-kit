@@ -18,6 +18,7 @@
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | 配置论文代码仓库，确认推理流程能跑通 |
 | [research-pack](skills/research-pack/SKILL.md) | 把一段时间内多个分支的报告、代码改动和结果图打包，发给外部模型讨论，并把对方的建议整理回项目 |
 | [academic-slides](skills/academic-slides/SKILL.md) | 梳理报告的逻辑、图表证据和讲稿，只改用户允许改动的部分，并检查最终文件 |
+| [multilane-review](skills/multilane-review/SKILL.md) | 只读审查一个分支或目录：分领域 bug、通用正确性、端到端流程与工程卫生、设计品味四路进行，再复核排名靠前的 bug |
 
 ## 也能按上下文自动启动的 skills
 
@@ -74,6 +75,13 @@ npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-
 用 $academic-slides 检查这份报告的叙事与台词，先讨论，不直接改文件。
 用 $natural-expression 润色这段正文，保留原意，减少重复与模板表达。
 用 $japanese-expression 修改这段日语台词，保留句间连接和研究结论的范围。
+用 $multilane-review 只读审查 main...feature，分开报告 bug 和设计问题。
+```
+
+代码审查（只读；平台支持时用子 agent 并行）：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review -y --copy
 ```
 
 安装前可以用 `npx skills add LarsPh/research-agent-kit -l` 查看有哪些 skills。如果用不了 `npx skills`，把需要的 `skills/` 子目录复制到 agent 的用户 skill 目录即可（Claude Code 是 `~/.claude/skills/`）。装好后在 agent 的 skill 列表里确认能看到名字；列表没刷新就开一个新会话再看。文件在磁盘上不代表 agent 已经识别。
