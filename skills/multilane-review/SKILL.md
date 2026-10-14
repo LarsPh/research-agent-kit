@@ -68,5 +68,8 @@ Use the layout in [report-template.md](references/report-template.md): verified 
 items, ranked design topics, and coverage. Keep bugs and design in separate sections; never rank one against
 the other. State that the review was static and which findings were not run.
 
+On Claude Code, optional hooks can log which files each lane opened and block an incomplete report; see
+[claude-code-hooks.md](references/claude-code-hooks.md).
+
 Expect roughly three times the tokens of a single-agent review. To save, run lane D on a cheaper model, cap
 lane B's effort, and never let lanes reread what the brief already holds.

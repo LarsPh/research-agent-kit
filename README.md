@@ -95,6 +95,9 @@ Code review (read-only; uses sub-agents when the platform has them):
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review -y --copy
 ```
 
+On Claude Code, optional hooks log which files each lane opened and block an incomplete report. They load
+only for the review session; see [claude-code-hooks.md](skills/multilane-review/references/claude-code-hooks.md).
+
 List the available skills before installing with `npx skills add LarsPh/research-agent-kit -l`. If
 `npx skills` is unavailable, copy the selected folders under `skills/` into the agent's user skill directory
 (for Claude Code, `~/.claude/skills/`). After installation, confirm the names in the agent's available-skill
