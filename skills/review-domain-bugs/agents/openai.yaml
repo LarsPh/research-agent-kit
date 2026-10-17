@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Domain Bugs"
+  short_description: "Find domain bugs against reference implementations, each with a proof path."
+  default_prompt: "Use $review-domain-bugs to check this module read-only against its reference implementation and report bugs with proof paths."

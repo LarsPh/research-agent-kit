@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Intent and Flow"
+  short_description: "Check code against its docs and walk the documented commands end to end."
+  default_prompt: "Use $review-intent-flow to check read-only whether the documented workflow in the README still works end to end."

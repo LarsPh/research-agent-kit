@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Design"
+  short_description: "Review design and maintainability as options for the human, without bugs."
+  default_prompt: "Use $review-design to review the design of this branch read-only and give me ranked topics with options."

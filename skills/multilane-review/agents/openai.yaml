@@ -1,4 +1,4 @@
 interface:
   display_name: "Multilane Review"
-  short_description: "Review code in four independent lanes, then verify the top bugs."
-  default_prompt: "Use $multilane-review to review this branch read-only: build a shared brief, run the domain, generic, end-to-end, and design lanes, verify the top bug candidates, and report bugs and design separately."
+  short_description: "Pick review lanes per project, run each in a fresh context, verify, and tier the report."
+  default_prompt: "Use $multilane-review to review this branch read-only: ask which lanes the project needs, build a shared brief, run the chosen lanes in fresh contexts, verify the top bug candidates, and give me a tiered report."
