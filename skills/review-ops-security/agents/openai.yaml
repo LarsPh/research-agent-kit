@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Ops and Security"
+  short_description: "Check long-run operations and, for shipped code, security and dependencies."
+  default_prompt: "Use $review-ops-security in operations mode to check read-only whether this training script survives a long run."
