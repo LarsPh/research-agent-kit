@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Claude Code Stop hook: keep the agent working until a multilane review report is complete.
 
-Acts only when the final message looks like a multilane report (it has a "## Bugs" heading). Then it
-requires the four report sections, a status of confirmed / plausible / rejected on each of the top 8 bug
-rows, a quoted line on every rejected row, and a Coverage section that says the review was static.
+Acts only when the final message looks like a multilane report (it has a "## Must Read" heading). Then it
+requires every heading of the report template, at most 5 Must Read and 10 Worth Reading items, a status of
+confirmed / plausible / rejected on each of the top 8 verified bug rows, a quoted line on every rejected
+row, and a Coverage section that says the review was static.
 A missing item blocks the stop with the list of gaps as the reason, at most MAX_BLOCKS times per session,
 so a report the agent cannot fix never traps it.
 
@@ -17,7 +18,21 @@ import sys
 import tempfile
 from pathlib import Path
 
-SECTIONS = ("## Bugs", "## End-to-End and Hygiene", "## Design", "## Coverage")
+TRIGGER = "## Must Read"
+SECTIONS = (
+    "## Plan",
+    "## Must Read",
+    "## Worth Reading",
+    "## Appendix",
+    "### Bugs (verified)",
+    "### Intent and Flow",
+    "### Tests",
+    "### Operations and Security",
+    "### Design",
+    "## Coverage",
+)
+TIER_LIMITS = (("## Must Read", 5), ("## Worth Reading", 10))
+BUGS = "### Bugs (verified)"
 STATUSES = {"confirmed", "plausible", "rejected"}
 STATUS_COLUMN = 4  # | # | file:line | issue | lane | status | proof path |
 MAX_BLOCKS = 2
@@ -54,18 +69,29 @@ def last_assistant_text(event):
 
 
 def section(report, heading):
+    """Text from a heading to the next heading of the same or a higher level."""
     start = report.find(heading)
     if start < 0:
         return ""
-    end = report.find("\n## ", start + len(heading))
-    return report[start : end if end >= 0 else len(report)]
+    level = len(heading) - len(heading.lstrip("#"))
+    end = re.compile(rf"^#{{1,{level}}} ", re.M).search(report, start + len(heading))
+    return report[start : end.start() if end else len(report)]
+
+
+def item_count(text):
+    """Top-level numbered or bulleted items; indented continuation lines do not count."""
+    return len(re.findall(r"^(?:\d+\.|[-*]) ", text, re.M))
 
 
 def problems(report):
     found = [f"missing section {name!r}" for name in SECTIONS if name not in report]
+    for heading, limit in TIER_LIMITS:
+        count = item_count(section(report, heading))
+        if count > limit:
+            found.append(f"{heading[3:]} has {count} items; move all but {limit} to a lower tier")
 
     rows = []
-    for line in section(report, "## Bugs").splitlines():
+    for line in section(report, BUGS).splitlines():
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
         if not line.strip().startswith("|") or len(cells) <= STATUS_COLUMN:
             continue
@@ -101,7 +127,7 @@ def main():
     except json.JSONDecodeError:
         return 0
     report = last_assistant_text(event)
-    if "## Bugs" not in report:
+    if TRIGGER not in report:
         return 0
     found = problems(report)
     counter = Path(tempfile.gettempdir()) / "multilane-review" / f"{event.get('session_id', 'unknown')}.blocks"

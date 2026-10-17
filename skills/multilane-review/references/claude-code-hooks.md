@@ -5,10 +5,10 @@ Two opt-in hooks for Claude Code. Other platforms skip this file; the skill work
 | Hook | Event | What it does |
 |---|---|---|
 | `scripts/log_coverage.py hook` | PostToolUse on `Read\|Grep\|Glob` | Appends each read or search, with the agent that made it, to `<temp>/multilane-review/<session>.jsonl` |
-| `scripts/check_report.py` | Stop | When the final message is a multilane report, blocks the stop until the four sections exist, each of the top 8 bugs has a status, every `rejected` quotes its line, and Coverage says the review was static |
+| `scripts/check_report.py` | Stop | When the final message is a multilane report, blocks the stop until every template heading exists, Must Read has 5 items or fewer and Worth Reading 10 or fewer, each of the top 8 verified bugs has a status, every `rejected` quotes its line, and Coverage says the review was static |
 
-Neither hook writes inside the target repository. `check_report.py` ignores messages without a `## Bugs`
-heading and blocks at most twice per session, so it never traps an unrelated conversation.
+Neither hook writes inside the target repository. `check_report.py` ignores messages without a
+`## Must Read` heading and blocks at most twice per session, so it never traps an unrelated conversation.
 
 ## Install for one review session
 
