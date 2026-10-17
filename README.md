@@ -24,7 +24,12 @@ computing environment.
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | Set up a paper repository and verify a runnable inference path |
 | [research-pack](skills/research-pack/SKILL.md) | Pack a period of multi-branch reports, diffs, and inspected visuals for an external research LLM, and ingest its guidance |
 | [academic-slides](skills/academic-slides/SKILL.md) | Shape a talk's storyline, figure evidence, and speaker script; change only what the user allows and check the final files |
-| [multilane-review](skills/multilane-review/SKILL.md) | Review a branch or directory read-only in four lanes (domain bugs, generic correctness, end-to-end flow and hygiene, design taste), then verify the top bug candidates |
+| [multilane-review](skills/multilane-review/SKILL.md) | Entry point for a read-only code review: asks whether the change was test-first and whether the code ships, runs the needed lanes in fresh contexts, verifies the top bugs, and returns a tiered report |
+| [review-domain-bugs](skills/review-domain-bugs/SKILL.md) | Review lane A, also usable alone: domain bugs against reference implementations, each with a proof path |
+| [review-intent-flow](skills/review-intent-flow/SKILL.md) | Review lane D, also usable alone: code against its docs, and the README's commands end to end |
+| [review-tests](skills/review-tests/SKILL.md) | Review lane T, also usable alone: whether the tests would catch the change breaking, by mutation |
+| [review-design](skills/review-design/SKILL.md) | Review lane C, also usable alone: design and maintainability as options, no bugs |
+| [review-ops-security](skills/review-ops-security/SKILL.md) | Review lane E, also usable alone: long-run operations, and security for code that ships |
 
 ## Skills That Also Start From Context
 
@@ -86,13 +91,14 @@ Example requests:
 Use $academic-slides to review this presentation's narrative and speaker notes. Discuss changes before editing files.
 Use $natural-expression to edit this prose, preserving its meaning while reducing repetition and formulaic language.
 Use $japanese-expression to revise these Japanese speaker notes, preserving sentence connections and the scope of research claims.
-Use $multilane-review to review main...feature read-only and report bugs and design separately.
+Use $multilane-review to review main...feature read-only and give me a tiered report.
+Use $review-tests to check whether my tests would fail if this change broke.
 ```
 
-Code review (read-only; uses sub-agents when the platform has them):
+Code review (read-only; runs each lane as a sub-agent when the platform has them; install the entry point with its modules):
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review -y --copy
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review review-domain-bugs review-intent-flow review-tests review-design review-ops-security -y --copy
 ```
 
 List the available skills before installing with `npx skills add LarsPh/research-agent-kit -l`. If

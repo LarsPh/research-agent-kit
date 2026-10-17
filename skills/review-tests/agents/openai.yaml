@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Tests"
+  short_description: "Check by mutation whether the tests would catch the change breaking."
+  default_prompt: "Use $review-tests to check whether the tests for this change would fail if the code broke, mutating only a scratch copy."

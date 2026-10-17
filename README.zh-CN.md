@@ -18,7 +18,12 @@
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | 配置论文代码仓库，确认推理流程能跑通 |
 | [research-pack](skills/research-pack/SKILL.md) | 把一段时间内多个分支的报告、代码改动和结果图打包，发给外部模型讨论，并把对方的建议整理回项目 |
 | [academic-slides](skills/academic-slides/SKILL.md) | 梳理报告的逻辑、图表证据和讲稿，只改用户允许改动的部分，并检查最终文件 |
-| [multilane-review](skills/multilane-review/SKILL.md) | 只读审查一个分支或目录：分领域 bug、通用正确性、端到端流程与工程卫生、设计品味四路进行，再复核排名靠前的 bug |
+| [multilane-review](skills/multilane-review/SKILL.md) | 只读代码审查的入口：先问是否先写测试、代码是否部署，只开需要的路，每路在新 context 里跑，复核排名靠前的 bug，最后给分级报告 |
+| [review-domain-bugs](skills/review-domain-bugs/SKILL.md) | 审查 A 路，也可单独用：对照参照实现找领域 bug，每条附 proof path |
+| [review-intent-flow](skills/review-intent-flow/SKILL.md) | 审查 D 路，也可单独用：代码和文档是否一致，README 的命令能否端到端跑通 |
+| [review-tests](skills/review-tests/SKILL.md) | 审查 T 路，也可单独用：用变异检查测试能否拦住改动出错 |
+| [review-design](skills/review-design/SKILL.md) | 审查 C 路，也可单独用：设计和可维护性，只给选项、不报 bug |
+| [review-ops-security](skills/review-ops-security/SKILL.md) | 审查 E 路，也可单独用：长时间运行的运维问题；对外发布时加上安全 |
 
 ## 也能按上下文自动启动的 skills
 
@@ -75,13 +80,14 @@ npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-
 用 $academic-slides 检查这份报告的叙事与台词，先讨论，不直接改文件。
 用 $natural-expression 润色这段正文，保留原意，减少重复与模板表达。
 用 $japanese-expression 修改这段日语台词，保留句间连接和研究结论的范围。
-用 $multilane-review 只读审查 main...feature，分开报告 bug 和设计问题。
+用 $multilane-review 只读审查 main...feature，给我分级报告。
+用 $review-tests 检查这次改动坏了的话我的测试会不会失败。
 ```
 
-代码审查（只读；平台支持时用子 agent 并行）：
+代码审查（只读；平台支持时每路用子 agent 在新 context 里跑；入口和模块一起装）：
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review -y --copy
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review review-domain-bugs review-intent-flow review-tests review-design review-ops-security -y --copy
 ```
 
 安装前可以用 `npx skills add LarsPh/research-agent-kit -l` 查看有哪些 skills。如果用不了 `npx skills`，把需要的 `skills/` 子目录复制到 agent 的用户 skill 目录即可（Claude Code 是 `~/.claude/skills/`）。装好后在 agent 的 skill 列表里确认能看到名字；列表没刷新就开一个新会话再看。文件在磁盘上不代表 agent 已经识别。
