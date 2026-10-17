@@ -90,6 +90,8 @@ npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review review-domain-bugs review-intent-flow review-tests review-design review-ops-security -y --copy
 ```
 
+在 Claude Code 上可以另外加两个可选 hook：记录每路审查读过哪些文件，报告不完整时不让 agent 结束。它们只在这次审查会话里加载，用法见 [claude-code-hooks.md](skills/multilane-review/references/claude-code-hooks.md)。
+
 安装前可以用 `npx skills add LarsPh/research-agent-kit -l` 查看有哪些 skills。如果用不了 `npx skills`，把需要的 `skills/` 子目录复制到 agent 的用户 skill 目录即可（Claude Code 是 `~/.claude/skills/`）。装好后在 agent 的 skill 列表里确认能看到名字；列表没刷新就开一个新会话再看。文件在磁盘上不代表 agent 已经识别。
 
 ## 研究工作流
