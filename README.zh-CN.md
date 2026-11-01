@@ -33,6 +33,7 @@
 | [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | agent 在 Orca 里运行，或收到其他 agent 发来的消息 | 让本地的 Codex/Claude 桌面应用给远端服务器上 Orca 终端里的 agent 派活、提问，并取回结果文件 |
 | [natural-expression](skills/natural-expression/SKILL.md) | 撰写或润色正文、slides、讲稿；`academic-slides` 写作时会调用 | 按页面文字、讲稿和正文各自的用途删去冗余，减少套话 |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | 文本是日语；`academic-slides` 处理日语内容时会调用 | 调整日语的主语省略、指代、句间衔接和朗读节奏 |
+| [graphics-debug](skills/graphics-debug/SKILL.md) | 渲染、重建、位姿或并排对比看着不对 | 从图上看到的异常推出按顺序排好的候补原因，再逐个用数值检查确认 |
 
 [templates/](templates/README.md) 提供两份指令模板，适用于 Codex 和 Claude Code 同时使用的仓库：一份两边共用的 `AGENTS.md`，以及一份只写 Claude 专属规则、通过 `@AGENTS.md` 引用共用部分的精简 `CLAUDE.md`。
 
@@ -67,6 +68,12 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger r
 ```
 
 `orca-remote-bridge` 要同时装在桌面应用和远端服务器两侧，两种角色写在同一个 skill 里。
+
+图形学调试（检查脚本只依赖 numpy）：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
 
 报告与表达类（建议一起安装。`academic-slides` 会读取另外两个 skill，只调整版式时则不会）：
 

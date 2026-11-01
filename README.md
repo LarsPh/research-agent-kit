@@ -39,6 +39,7 @@ computing environment.
 | [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
 | [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
+| [graphics-debug](skills/graphics-debug/SKILL.md) | a render, reconstruction, pose, or side-by-side comparison looks wrong | Turn what an image shows into ranked candidate causes and confirm each with a numeric check |
 
 [templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories
 that Codex and Claude Code both work in.
@@ -77,6 +78,12 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger r
 
 Install `orca-remote-bridge` both for the desktop app's agent and for the agents on the remote host; both
 roles live in the same skill.
+
+Graphics debugging (its check script needs only numpy):
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
 
 Presentation and expression (install together; `academic-slides` reads the expression skills by relative
 reference, and layout-only edits load neither):
