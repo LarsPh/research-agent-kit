@@ -4,7 +4,7 @@ Two opt-in hooks for Claude Code. Other platforms skip this file; the skill work
 
 | Hook | Event | What it does |
 |---|---|---|
-| `scripts/log_coverage.py hook` | PostToolUse on `Read\|Grep\|Glob` | Appends each read or search, with the agent that made it, to `<temp>/multilane-review/<session>.jsonl` |
+| `scripts/log_coverage.py hook` | PostToolUse on `Read\|Grep\|Glob\|Bash` | Appends each read or search, with the agent that made it, to `<temp>/multilane-review/<session>.jsonl` |
 | `scripts/check_report.py` | Stop | When the final message is a multilane report, blocks the stop until every template heading exists, Must Read has 5 items or fewer and Worth Reading 10 or fewer, each of the top 8 verified bugs has a status, every `rejected` quotes its line, and Coverage says the review was static |
 
 Neither hook writes inside the target repository. `check_report.py` ignores messages without a
@@ -20,7 +20,7 @@ sessions. Save this as `multilane-review-hooks.json`, with `SKILL_DIR` replaced 
 {
   "hooks": {
     "PostToolUse": [
-      {"matcher": "Read|Grep|Glob",
+      {"matcher": "Read|Grep|Glob|Bash",
        "hooks": [{"type": "command", "command": "python3 SKILL_DIR/scripts/log_coverage.py hook"}]}
     ],
     "Stop": [
@@ -48,4 +48,8 @@ report's Coverage section. To check a saved report by hand: `check_report.py --f
 
 - The log records what a lane opened, not what it understood. An opened file is not a reviewed file.
 - `Grep` and `Glob` entries record the searched path, not every file they matched.
+- `Bash` is matched because agents often read with `cat`, `sed -n` or `git show` instead of `Read`. A shell
+  command counts as opening a target file only when it runs a reading command and names the file; a bare
+  `git diff` counts as seeing the diff hunks, not the whole files. Other shell reads (a script that opens
+  files itself) are not seen.
 - Without the `agent_type` hook field (older Claude Code), all reads are logged under `main`.
