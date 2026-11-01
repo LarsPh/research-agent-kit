@@ -1,0 +1,4 @@
+interface:
+  display_name: "Graphics Debug"
+  short_description: "Turn what a render shows into ranked causes and confirm each with a numeric check."
+  default_prompt: "Use $graphics-debug to diagnose why this render looks wrong: build the diagnostic sheet, rank candidate causes, and confirm the cause with a numeric invariant."
