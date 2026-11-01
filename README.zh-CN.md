@@ -13,7 +13,7 @@
 
 | Skill | 用途 |
 |---|---|
-| [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | 接手研究仓库，探索代码和数据，分析实验，整理下一步要研究的问题 |
+| [research-evidence-loop](skills/research-evidence-loop/SKILL.md) | 接手研究仓库，探索代码和数据，分析实验，整理下一步要研究的问题 |
 | [research-task-implementation](skills/research-task-implementation/SKILL.md) | 按已确定的方案实现一个研究任务，同时记录检查清单和验证结果；研究工作流也会调用它 |
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | 配置论文代码仓库，确认推理流程能跑通 |
 | [research-pack](skills/research-pack/SKILL.md) | 把一段时间内多个分支的报告、代码改动和结果图打包，发给外部模型讨论，并把对方的建议整理回项目 |
@@ -33,6 +33,7 @@
 | [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | agent 在 Orca 里运行，或收到其他 agent 发来的消息 | 让本地的 Codex/Claude 桌面应用给远端服务器上 Orca 终端里的 agent 派活、提问，并取回结果文件 |
 | [natural-expression](skills/natural-expression/SKILL.md) | 撰写或润色正文、slides、讲稿；`academic-slides` 写作时会调用 | 按页面文字、讲稿和正文各自的用途删去冗余，减少套话 |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | 文本是日语；`academic-slides` 处理日语内容时会调用 | 调整日语的主语省略、指代、句间衔接和朗读节奏 |
+| [graphics-debug](skills/graphics-debug/SKILL.md) | 渲染、重建、位姿或并排对比看着不对 | 从图上看到的异常推出按顺序排好的候补原因，再逐个用数值检查确认 |
 
 [templates/](templates/README.md) 提供两份指令模板，适用于 Codex 和 Claude Code 同时使用的仓库：一份两边共用的 `AGENTS.md`，以及一份只写 Claude 专属规则、通过 `@AGENTS.md` 引用共用部分的精简 `CLAUDE.md`。
 
@@ -43,13 +44,13 @@
 研究代码工作流：
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s research-evidence-loop research-task-implementation -y --copy
 ```
 
 打开一个能识别这些 skills 的新会话，明确要求初始化仓库：
 
 ```text
-用 $zhaorong-research-workflow 初始化这个已有研究仓库。先审查并拟定仓库工作流，暂不配置项目环境。
+用 $research-evidence-loop 初始化这个已有研究仓库。先审查并拟定仓库工作流，暂不配置项目环境。
 ```
 
 工作流会检查是否装有 Matt Pocock 的工程类 skills。如果缺少，先看工作流对这些依赖的说明，再安装：
@@ -67,6 +68,12 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger r
 ```
 
 `orca-remote-bridge` 要同时装在桌面应用和远端服务器两侧，两种角色写在同一个 skill 里。
+
+图形学调试（检查脚本只依赖 numpy）：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
 
 报告与表达类（建议一起安装。`academic-slides` 会读取另外两个 skill，只调整版式时则不会）：
 

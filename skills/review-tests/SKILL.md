@@ -1,6 +1,6 @@
 ---
 name: review-tests
-description: Review whether a change's tests would actually catch it breaking, by mutation rather than by reading. Lists the documented behaviour and risky logic, mutates each point in a scratch copy and runs the tests, or does a paper mutation when the code cannot run, and names each missing test. Use after test-first development, or as lane T of multilane-review.
+description: Reviews whether a change's tests would actually catch it breaking, by mutation rather than by reading. Lists the documented behaviour and risky logic, mutates each point in a scratch copy and runs the tests, or does a paper mutation when the code cannot run, and names each missing test. Use after test-first development, or as lane T of multilane-review.
 ---
 
 # Review Tests

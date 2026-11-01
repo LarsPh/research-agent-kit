@@ -8,6 +8,9 @@ value left as a placeholder.
   standards, and the checkpoints where Codex must stop and ask.
 - [CLAUDE.md.template](CLAUDE.md.template) — a thin bridge that imports `AGENTS.md` and adds only
   Claude-specific behavior.
+- [platform-profile.md.template](platform-profile.md.template) — machine roles, GPUs, shell, caches, and
+  remote access for one lab or cluster; skills such as `paper-code-bootstrap` read it instead of hard-coding
+  a platform. Keep the filled copy private when it names hosts or paths.
 
 ## Why the Two Patches Point in Opposite Directions
 

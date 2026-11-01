@@ -5,7 +5,7 @@ the target environment proves them.
 
 ## 1. Bootstrap Skills Before the Project Environment
 
-1. Install `zhaorong-research-workflow` and `research-task-implementation` at user scope.
+1. Install `research-evidence-loop` and `research-task-implementation` at user scope.
 2. Check whether Matt Pocock's engineering skills are installed.
 3. If they are missing, show the user the public installation command and pause for approval or manual
    installation. Do not install external packages silently.

@@ -19,7 +19,7 @@ computing environment.
 
 | Skill | Purpose |
 |---|---|
-| [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | Onboard a research repository, explore code and data, analyze experiments, and maintain the next research questions |
+| [research-evidence-loop](skills/research-evidence-loop/SKILL.md) | Onboard a research repository, explore code and data, analyze experiments, and maintain the next research questions |
 | [research-task-implementation](skills/research-task-implementation/SKILL.md) | Implement a research task from an agreed plan, with checklists and validation evidence; the workflow also starts it |
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | Set up a paper repository and verify a runnable inference path |
 | [research-pack](skills/research-pack/SKILL.md) | Pack a period of multi-branch reports, diffs, and inspected visuals for an external research LLM, and ingest its guidance |
@@ -39,6 +39,7 @@ computing environment.
 | [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
 | [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
+| [graphics-debug](skills/graphics-debug/SKILL.md) | a render, reconstruction, pose, or side-by-side comparison looks wrong | Turn what an image shows into ranked candidate causes and confirm each with a numeric check |
 
 [templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories
 that Codex and Claude Code both work in.
@@ -50,13 +51,13 @@ that Codex and Claude Code both work in.
 Research-code workflow:
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s research-evidence-loop research-task-implementation -y --copy
 ```
 
 In a new session that recognizes the skills, initialize the target repository explicitly:
 
 ```text
-Use $zhaorong-research-workflow to initialize this existing research repository. Audit it and draft the repository workflow first; stop before configuring the project environment.
+Use $research-evidence-loop to initialize this existing research repository. Audit it and draft the repository workflow first; stop before configuring the project environment.
 ```
 
 The workflow checks for Matt Pocock's engineering skills. If they are missing, review the workflow's
@@ -77,6 +78,12 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger r
 
 Install `orca-remote-bridge` both for the desktop app's agent and for the agents on the remote host; both
 roles live in the same skill.
+
+Graphics debugging (its check script needs only numpy):
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
 
 Presentation and expression (install together; `academic-slides` reads the expression skills by relative
 reference, and layout-only edits load neither):
