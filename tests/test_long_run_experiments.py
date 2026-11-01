@@ -129,7 +129,13 @@ def test_stop_hook_rules(tmp_path, env):
     (runs / "queue.json").write_text(json.dumps([{"id": "pad", "status": "ready"}]))  # no line/why: not counted
     assert stop_hook(env, stop_hook_active=True) is None  # already continuing because of a stop hook
     assert "no ready task" in stop_hook(env)
-    (runs / "queue.json").write_text(json.dumps([{"id": "t1", "line": "L3", "why": "row 2", "status": "ready"}]))
+    half = {"id": "t0", "line": "L3", "why": "row 2", "status": "ready"}  # no decision_if / dedup: not counted
+    (runs / "queue.json").write_text(json.dumps([half, dict(half, id="t0b", decision_if="x")]))  # t0b: no dedup
+    assert "no ready task" in stop_hook(env)
+    (runs / "hooks.log").unlink()
+    full = dict(half, id="t1", decision_if="beats d30: switch default", dedup_checked=True)
+    (runs / "queue.json").write_text(json.dumps([full]))
+    assert "ready task t1" in stop_hook(env)
     assert "ready task t1" in stop_hook(env)
     assert stop_hook(env) is None  # third refusal within an hour is skipped (cap 2)
 
@@ -183,3 +189,41 @@ def test_resume_check(tmp_path, env):
     (runs / "resume.json").unlink()
     busy = run("resume_check.py", *args[:-2], "--quiet-min", "60", env=env)
     assert busy.stdout == ""  # agent active recently
+
+
+def test_stop_hook_lets_a_question_stay_the_last_message(tmp_path, env):
+    runs = tmp_path / "runs"
+    (runs / "UNATTENDED").touch()
+    env["LONGRUN_FAKE_GPUS"] = "0:0:0"
+    assert stop_hook(env, last_assistant_message="Queue refilled.") is not None
+    assert stop_hook(env, last_assistant_message="Results above. ❓ Needs input: switch default to d50?") is None
+    assert "asks_user" in (runs / "hooks.log").read_text()
+
+
+def test_stop_hook_refusal_restates_blocking_questions(tmp_path, env):
+    runs = tmp_path / "runs"
+    (runs / "UNATTENDED").touch()
+    env["LONGRUN_FAKE_GPUS"] = "0:0:0"
+    (runs / "questions.json").write_text(json.dumps(
+        [{"id": "q2", "line": "L5", "question": "spend $200 on API?", "blocks": True, "status": "open"}]))
+    task = {"id": "t1", "line": "L3", "why": "row 2", "decision_if": "x", "dedup_checked": True}
+    (runs / "queue.json").write_text(json.dumps([task]))
+    reason = stop_hook(env)
+    assert "ready task t1" in reason and "restate" in reason and "spend $200" in reason
+
+
+def test_padding_suspects_and_no_count_threshold(tmp_path, env):
+    runs = tmp_path / "runs"
+    (runs / "UNATTENDED").touch()
+    env["LONGRUN_FAKE_GPUS"] = "0:0:0"
+    reason = stop_hook(env)
+    assert "idle_ok.json" in reason and "at least" not in reason
+    block_time = (runs / "hooks.log").read_text().split("\t")[0]
+    from datetime import datetime, timedelta
+    t0 = datetime.fromisoformat(block_time)
+    tasks = [{"id": "rushed", "line": "L3", "why": "w", "created": (t0 + timedelta(minutes=2)).isoformat()},
+             {"id": "planned", "line": "L3", "why": "w", "created": (t0 - timedelta(hours=2)).isoformat()}]
+    (runs / "queue.json").write_text(json.dumps(tasks))
+    out = run("queue_check.py", "--suspects", env=env).stdout
+    assert "rushed" in out and "planned" not in out
+    assert "possible padding" in run("context_inject.py", env=env).stdout

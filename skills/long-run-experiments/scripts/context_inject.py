@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lrx_common as lc  # noqa: E402
 import jobctl  # noqa: E402
+import queue_check  # noqa: E402
 
 MAX_CHARS = 1500
 
@@ -36,6 +37,10 @@ def render(root):
     ready = lc.ready_tasks(root)
     if ready:
         out.append("ready: " + ", ".join(f"{t['id']} ({t['line']})" for t in ready[:5]))
+    suspects = queue_check.padding_suspects(root)
+    if suspects:
+        out.append("possible padding (queued right after a hook refusal; list in the report): "
+                   + ", ".join(str(t.get("id")) for t in suspects[:5]))
     for q in lc.open_questions(root)[:5]:
         out.append(f"question {q.get('id')} blocks={q.get('blocks')} default={q.get('default')!r}: "
                    f"{str(q.get('question', ''))[:120]}")

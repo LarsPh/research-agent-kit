@@ -23,12 +23,37 @@ Write the default as an action, not "wait". If you cannot name a safe default, t
 
 ## The queue
 
-- A ready task names its `line` and `why` (the priority or table cell it serves). The Stop hook and cron
-  ignore tasks without them, so padding the queue does not keep the agent busy.
-- Before queueing, check `dead_ends.md` and the ledger for the same idea.
+Pressure to keep GPUs busy produces both the best and the worst tasks of a night. In one 15-hour run a hook
+that demanded at least three queued tasks fired about ten times: of six tasks added under it, two repeated
+delivered work, one re-diagnosed a retired idea, one only unified formats, one was launched before its
+input existed, and two were the most valuable diagnostics of the day. Counting tasks cannot tell these
+apart, so the hook never counts; the agent answers four questions before queueing.
+
+### Four questions before queueing
+
+If any answer is missing, the task is padding: write `idle_ok.json` instead.
+
+1. **Which line and which next step?** Point at the ledger row it serves; the row existed before the hook
+   fired. A reason written after the refusal is padding.
+2. **Which decision does the result change?** Write it as `decision_if`: "if A, do X; if B, do Y".
+   "More complete material" or "consistent formatting" changes no decision.
+3. **Deduplicated?** Search `dead_ends.md`, the ledger and recent output folders for the same scene or
+   question; set `dedup_checked: true` only after that search.
+4. **Prerequisites met?** If an upstream result is still coming (the next hop of a chain, a running
+   experiment), queue it as `blocked` and wait instead of launching a version that is stale on arrival.
+
+### Signs that a real task is missing
+
+- A line in the ledger is marked stalled, and its next step can run now (no user, no upstream wait).
+- The user's top priority has nothing running while a GPU is idle.
+- A new unexplained observation appeared, and no diagnostic for it is queued.
+
+### Rules
+
+- The Stop hook and cron ignore tasks without `line`, `why`, `decision_if` and `dedup_checked: true`.
 - Order by the ledger's priorities, not by what is easiest to run.
-- When nothing is worth running, write `idle_ok.json` with the reason and an expiry instead of inventing
-  diagnostic jobs.
+- Record `created` on each task; list `queue_check.py --suspects` in the next report so the user can
+  review tasks queued right after a refusal.
 
 ## When to stop a line
 

@@ -53,9 +53,18 @@ def questions(root=None):
     return load_json((root or run_dir()) / "questions.json", [])
 
 
+READY_FIELDS = ("line", "why", "decision_if")
+
+
+def is_ready(task):
+    """A task counts only if it names its line, why, the decision its result changes, and was deduplicated."""
+    return (task.get("status", "ready") == "ready" and all(task.get(k) for k in READY_FIELDS)
+            and task.get("dedup_checked") is True)
+
+
 def ready_tasks(root=None):
-    """Queued tasks that name their line and reason and are not blocked."""
-    return [t for t in queue(root) if t.get("status", "ready") == "ready" and t.get("line") and t.get("why")]
+    """Queued tasks that pass is_ready; padding without these fields is ignored by the hook and cron."""
+    return [t for t in queue(root) if is_ready(t)]
 
 
 def open_questions(root=None):
