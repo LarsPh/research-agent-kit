@@ -1,6 +1,6 @@
 ---
 name: japanese-expression
-description: Calibrate Japanese expression, handling subject omission, reference words, sentence linking, register, and read-aloud rhythm. Use when writing, translating into, or polishing Japanese slides, talk scripts, body text, or emails. Triggers include 日语润色, 日语台词, 翻成日语, 敬语.
+description: Calibrates Japanese expression, handling subject omission, reference words, sentence linking, register, and read-aloud rhythm. Use when writing, translating into, or polishing Japanese slides, talk scripts, body text, or emails. Triggers include 日语润色, 日语台词, 翻成日语, 敬语.
 ---
 
 # Japanese Expression
