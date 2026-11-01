@@ -105,6 +105,9 @@ what happens if they skip an item, not by lane:
 Within a tier, list bugs and design separately; never rank one against the other. Under a lane that was off,
 write one line saying why. State that the review was static and which findings were not run.
 
+On Claude Code, optional hooks can log which files each lane opened and block an incomplete report; see
+[claude-code-hooks.md](references/claude-code-hooks.md).
+
 ## Repeat Reviews
 
 Stop after 3 rounds on the same change. From round 2, review only the diff since the previous round, and do
