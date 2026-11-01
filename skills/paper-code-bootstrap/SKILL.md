@@ -1,6 +1,6 @@
 ---
 name: paper-code-bootstrap
-description: Set up newly cloned research/paper code repositories into runnable uv-based inference environments. Use when an agent needs to convert README/requirements install instructions into pyproject.toml or uv workflows, install and validate dependencies including CUDA extensions, download checkpoints/models/config assets, and smoke-test an inference/demo command on an appropriate GPU node.
+description: Sets up newly cloned research or paper code repositories as runnable uv-based inference environments. Use when an agent needs to convert README or requirements install instructions into pyproject.toml or uv workflows, install and validate dependencies including CUDA extensions, download checkpoints, models, or config assets, and smoke-test an inference or demo command on a suitable GPU machine. Triggers include 跑通, 配环境, 复现 demo, 装依赖.
 ---
 
 # Paper Code Bootstrap
@@ -28,18 +28,20 @@ Use this skill to turn a fresh research repository into a reproducible local dem
      ```
 
 3. Install on the right machine:
-   - Do filesystem edits and lightweight checks on the file server.
-   - Do CUDA extension builds, `nvcc` checks, CUDA smoke tests, and inference on a GPU node.
+   - Follow the platform profile (see Platform Profile below) for where to edit files, where to build, and
+     where to run GPU work.
+   - Do CUDA extension builds, `nvcc` checks, CUDA smoke tests, and inference on a machine with a GPU.
    - Before heavy inference, run `nvidia-smi` and choose one idle GPU.
-   - For shared venvs across multiple GPU architectures, compile CUDA extensions with all needed SMs, e.g. `TORCH_CUDA_ARCH_LIST="8.6;8.9"` for RTX A5000/A6000 and Ada cards.
+   - For an environment shared across GPU architectures, compile CUDA extensions for every compute
+     capability that will run it: read each GPU's capability with
+     `nvidia-smi --query-gpu=name,compute_cap --format=csv` and set `TORCH_CUDA_ARCH_LIST` to the list.
 
 4. Download required assets:
    - Prefer the code's native download path if it is clear.
    - Otherwise use official model hubs or README links.
    - For Hugging Face, consider a project-local cache for reproducibility:
-     ```fish
-     set -x HF_HOME /path/to/repo/hf_cache
-     set -x HF_HUB_DISABLE_XET 1
+     ```sh
+     export HF_HOME=/path/to/repo/hf_cache
      ```
    - Resume interrupted downloads rather than restarting large files.
 
@@ -50,30 +52,34 @@ Use this skill to turn a fresh research repository into a reproducible local dem
    - Prefer CLI inference over WebUI for first validation because it has fewer moving parts.
 
 6. Leave runnable commands:
-   - Provide fish-compatible commands for setup, validation, and demo.
-   - Include GPU-node and SSH forwarding instructions if a WebUI is involved.
+   - Provide commands for setup, validation, and demo in the user's shell (from the profile; POSIX `sh`
+     when unknown).
+   - Include SSH forwarding instructions if a WebUI runs on a remote machine.
    - Note any deviations from upstream requirements, optional dependencies skipped/installed, and residual risks.
 
 7. Write a repo-local memo:
    - Create a concise Markdown file such as `SETUP_DEMO_NOTES.md`, `LOCAL_DEMO.md`, or a project-specific name.
    - Include install decisions, uv commands, checkpoint/cache locations, optional acceleration dependency decisions, GPU architecture notes, demo commands, WebUI forwarding commands, and known failure modes.
-   - Keep it practical for future recall; prefer copy-pasteable fish commands.
+   - Keep it practical for future recall; prefer copy-pasteable commands.
 
 8. Final response requirements:
    - Report the most common demo command(s) the user should run.
    - Mention where the memo Markdown file was written.
    - Call out whether optional acceleration dependencies were installed, skipped, or still awaiting user choice.
 
-## Lab Defaults
+## Platform Profile
 
-- Use `uv run python ...` instead of plain `python`.
-- Use GPU nodes for CUDA builds/inference; do not run heavy GPU jobs on the file server.
-- Use one GPU per job unless the user explicitly asks otherwise.
-- Set memory helpers when useful:
-  ```fish
-  set -x PYTORCH_CUDA_ALLOC_CONF expandable_segments:True
-  ```
-- For WebUIs bound to `127.0.0.1` on GPU nodes, use two-hop SSH forwarding through the file server when the local PC cannot reach GPU nodes directly.
+Machines, shells, and GPU rules differ between labs, so this skill keeps none of them. Before step 3, look
+for a platform profile, in this order:
+
+1. a compute or platform section in the target repository's `AGENTS.md` or `CLAUDE.md`;
+2. a profile file the user names, for example one filled in from this kit's
+   [platform-profile template](https://github.com/LarsPh/research-agent-kit/blob/main/templates/platform-profile.md.template).
+
+Follow it for: which machine edits files and which runs GPU work, the shell, GPUs per job, cache locations,
+memory settings, and how to forward a WebUI port. Without a profile, discover what you can (`hostname`,
+`nvidia-smi`, `$SHELL`, scheduler commands), ask only for what discovery cannot settle, and default to
+`uv run python`, one GPU per job, and POSIX `sh` commands.
 
 ## Checklists
 

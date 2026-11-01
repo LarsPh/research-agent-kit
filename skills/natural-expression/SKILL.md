@@ -1,6 +1,6 @@
 ---
 name: natural-expression
-description: Strip AI-sounding patterns and redundancy from prose and calibrate its tone, handling template phrasing, empty parallelism, defensive writing, and stacked punctuation against the user's own samples. Use when writing or polishing slide text, speaker scripts, body text, emails, or application materials; or when the user says text reads as templated, padded, or machine-written. Triggers include 润色, 去 AI 感, AI 味, 去冗, 语气.
+description: Strips AI-sounding patterns and redundancy from prose and calibrates its tone, handling template phrasing, empty parallelism, defensive writing, and stacked punctuation against the user's own samples. Use when writing or polishing slide text, speaker scripts, body text, emails, or application materials; or when the user says text reads as templated, padded, or machine-written. Triggers include 润色, 去 AI 感, AI 味, 去冗, 语气.
 ---
 
 # Natural Expression

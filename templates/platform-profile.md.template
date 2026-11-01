@@ -1,0 +1,36 @@
+# Platform Profile
+
+Machine-specific facts that platform-neutral skills (for example `paper-code-bootstrap`) read before running
+anything. Fill in what is true for your lab or cluster; delete rows that do not apply. Keep this file out of
+public repositories when it names hosts, paths, or queues: put it in a private repository's `AGENTS.md`
+(as a "Compute platform" section) or in a local file you point the agent to.
+
+## Machines and Roles
+
+| Role | Machine or pattern | Notes |
+|---|---|---|
+| Edit files, run git, light checks | `<login or file server>` | `<no GPU / no heavy jobs>` |
+| Build CUDA extensions, run GPU work | `<GPU nodes or scheduler partition>` | `<how to get a shell or submit a job>` |
+
+## GPUs
+
+- Models and compute capabilities: `<e.g. RTX A6000 = 8.6, RTX 4090 = 8.9>`
+- `TORCH_CUDA_ARCH_LIST` for shared environments: `<e.g. "8.6;8.9">`
+- GPUs per job unless asked otherwise: `<1>`
+- Pick an idle GPU with: `<nvidia-smi / scheduler command>`
+
+## Shell and Environment
+
+- Login shell for copy-paste commands: `<bash / zsh / fish>`
+- Python runner: `<uv run python>`
+- Useful environment variables: `<e.g. PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True>`
+
+## Caches and Data
+
+- Model cache (`HF_HOME` etc.): `<project-local hf_cache / shared path>`
+- Hugging Face download settings: `<e.g. HF_HUB_DISABLE_XET=1 if xet downloads fail here>`
+- Datasets: `<where they live; read-only?>`
+
+## Remote Access
+
+- Reaching a WebUI on a GPU machine: `<direct ssh -L / two hops via the login node>`

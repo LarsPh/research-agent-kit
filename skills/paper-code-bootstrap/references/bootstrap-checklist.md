@@ -27,34 +27,33 @@
 ## CUDA Extension Installs
 
 - Check active CUDA and compiler:
-  ```fish
+  ```sh
   which nvcc
   nvcc --version
-  echo $CUDA_HOME
+  echo "$CUDA_HOME"
   ```
-- Compile shared environments for all likely GPUs:
-  ```fish
-  set -x TORCH_CUDA_ARCH_LIST "8.6;8.9"
+- Compile shared environments for every GPU that will run them (`nvidia-smi --query-gpu=name,compute_cap --format=csv`):
+  ```sh
+  export TORCH_CUDA_ARCH_LIST="8.6;8.9"   # example: one entry per compute capability
   ```
 - If a cached wheel was built for the wrong architecture, force source rebuild:
-  ```fish
+  ```sh
   uv pip install --no-cache --reinstall-package <pkg> --no-deps --no-binary <pkg> --no-build-isolation <specifier>
   ```
 
 ## Model Assets
 
 - Prefer project-local cache for large Hugging Face assets:
-  ```fish
-  set -x HF_HOME /path/to/repo/hf_cache
-  set -x HF_HUB_DISABLE_XET 1
+  ```sh
+  export HF_HOME=/path/to/repo/hf_cache
   ```
 - Verify large downloads by loading the model or checking expected snapshot files.
-- If a repo needs auth, tell the user to run `huggingface-cli login` on the GPU node.
+- If a repo needs auth, tell the user to run `huggingface-cli login` on the machine that downloads the assets.
 
 ## Validation
 
 - Import smoke:
-  ```fish
+  ```sh
   uv run python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"
   ```
 - CUDA extension smoke: call a tiny kernel if possible, not only import.

@@ -1,6 +1,6 @@
 ---
 name: academic-slides
-description: Plan, build, revise, and review academic slide decks, covering research narrative, figure evidence, speaker scripts, slide-to-slide transitions, and talk timing. Use when preparing a conference talk, lab-meeting report, thesis defense, or results presentation; when editing an existing deck or its speaker script; or when reviewing a deck's story and evidence. Triggers include slides, 组会报告, 答辩, 台词.
+description: Plans, builds, revises, and reviews academic slide decks, covering research narrative, figure evidence, speaker scripts, slide-to-slide transitions, and talk timing. Use when preparing a conference talk, lab-meeting report, thesis defense, or results presentation; when editing an existing deck or its speaker script; or when reviewing a deck's story and evidence. Triggers include slides, 组会报告, 答辩, 台词.
 ---
 
 # Academic Slides

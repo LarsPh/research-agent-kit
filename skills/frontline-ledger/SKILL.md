@@ -1,6 +1,6 @@
 ---
 name: frontline-ledger
-description: Keep one rolling ledger per research line so chat carries only deltas. Use when a research line accumulates state across turns; when the user says things are getting lost in chat; or when the user returns and asks where a line stands. Triggers include 进度, 汇总, 容易漏, 待决问题.
+description: Keeps one rolling ledger per research line so chat carries only deltas. Use when a research line accumulates state across turns; when the user says things are getting lost in chat; or when the user returns and asks where a line stands. Triggers include 进度, 汇总, 容易漏, 待决问题.
 ---
 
 # Frontline Ledger
