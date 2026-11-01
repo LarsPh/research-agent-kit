@@ -1,0 +1,4 @@
+interface:
+  display_name: "Long-Run Experiments"
+  short_description: "Run experiments unattended without stalls, idle GPUs, or early conclusions."
+  default_prompt: "Use $long-run-experiments to keep these experiments running unattended tonight and report what changed."

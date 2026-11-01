@@ -34,6 +34,7 @@
 | [natural-expression](skills/natural-expression/SKILL.md) | 撰写或润色正文、slides、讲稿；`academic-slides` 写作时会调用 | 按页面文字、讲稿和正文各自的用途删去冗余，减少套话 |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | 文本是日语；`academic-slides` 处理日语内容时会调用 | 调整日语的主语省略、指代、句间衔接和朗读节奏 |
 | [graphics-debug](skills/graphics-debug/SKILL.md) | 渲染、重建、位姿或并排对比看着不对 | 从图上看到的异常推出按顺序排好的候补原因，再逐个用数值检查确认 |
+| [long-run-experiments](skills/long-run-experiments/SKILL.md) | 实验要无人值守地长跑（挂一晚上、夜间实验），或有排队任务时 GPU 空闲 | 无人值守跑实验：任务脱离会话运行并留完成标记，GPU 任务队列，问题只在必须时才阻塞、其余按默认继续，不轮询也能自动恢复，报告前过一遍检查 |
 
 [templates/](templates/README.md) 提供两份指令模板，适用于 Codex 和 Claude Code 同时使用的仓库：一份两边共用的 `AGENTS.md`，以及一份只写 Claude 专属规则、通过 `@AGENTS.md` 引用共用部分的精简 `CLAUDE.md`。
 
@@ -73,6 +74,12 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s frontline-ledger r
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
+
+无人值守长跑实验（脚本只依赖 Python 3；两个 Claude Code hook 可选，见 skill 内 `references/claude-code-hooks.md`）：
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s long-run-experiments -y --copy
 ```
 
 报告与表达类（建议一起安装。`academic-slides` 会读取另外两个 skill，只调整版式时则不会）：

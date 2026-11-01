@@ -40,6 +40,7 @@ computing environment.
 | [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
 | [graphics-debug](skills/graphics-debug/SKILL.md) | a render, reconstruction, pose, or side-by-side comparison looks wrong | Turn what an image shows into ranked candidate causes and confirm each with a numeric check |
+| [long-run-experiments](skills/long-run-experiments/SKILL.md) | you leave experiments running unattended (overnight, 长跑, 挂一晚上) or GPUs sit idle while work is queued | Run experiments without supervision: detached jobs with done markers, a GPU queue, questions that block only when they must, resume without polling, and a report gate |
 
 [templates/](templates/README.md) holds a shared `AGENTS.md` and a thin `CLAUDE.md` bridge for repositories
 that Codex and Claude Code both work in.
@@ -83,6 +84,12 @@ Graphics debugging (its check script needs only numpy):
 
 ```sh
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y --copy
+```
+
+Unattended long runs (scripts need only Python 3; the two Claude Code hooks are optional, see the skill's `references/claude-code-hooks.md`):
+
+```sh
+npx skills add LarsPh/research-agent-kit -g -a claude-code -s long-run-experiments -y --copy
 ```
 
 Presentation and expression (install together; `academic-slides` reads the expression skills by relative
