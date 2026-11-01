@@ -3,7 +3,7 @@ name: research-evidence-loop
 description: "Adaptive research-sprint orchestration for existing ML and graphics repositories. Use to initialize agent workflow in a migrated or legacy research repo, explore a codebase with new data and visual diagnostics, turn research discussion into a rolling bite-sized plan, analyze experiment evidence and revise direction, or run a formal implementation and review sprint without freezing the full roadmap."
 ---
 
-# Zhaorong Research Workflow
+# Research Evidence Loop
 
 Run research as a rolling evidence loop. Keep repository documents authoritative, expose uncertainty,
 and plan only the frontier that current evidence makes decision-complete.
