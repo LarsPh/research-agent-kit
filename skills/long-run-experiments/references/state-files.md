@@ -26,12 +26,14 @@ logs are append-only: add lines, never edit old ones.
 ```json
 [
   {"id": "L3-d50", "line": "L3", "why": "main table row 2, night scene d50", "status": "ready",
-   "brief": "runs/briefs/L3-d50.md"}
+   "decision_if": "d50 beats d30 on 3 of 4 scenes: switch the default; else keep d30 and close row 2",
+   "dedup_checked": true, "created": "2026-11-01T02:10:00+09:00", "brief": "runs/briefs/L3-d50.md"}
 ]
 ```
 
-`status` is `ready`, `blocked` or `launched` (`jobctl.py launch` sets it). A task without `line` and `why`
-is not counted as ready anywhere.
+`status` is `ready`, `blocked` or `launched` (`jobctl.py launch` sets it). A task counts as ready only with
+`line`, `why`, `decision_if` and `dedup_checked: true`. `created` lets `queue_check.py --suspects` list
+tasks queued within five minutes after a Stop-hook refusal, for the user to review as possible padding.
 
 ## questions.json
 

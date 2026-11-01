@@ -1,6 +1,6 @@
 # Evaluation Scenarios
 
-Each scenario reproduces a failure seen in real long runs. Run it in a fresh context with and without the skill,
+Each scenario reproduces a failure seen in real long runs (7 and 8 from a 15-hour run on 2026-11-01). Run it in a fresh context with and without the skill,
 on a scratch run directory (`LONGRUN_DIR`) and short fake jobs (`sleep`, `exit 1`, a script that prints a few
 lines and stops). `LONGRUN_FAKE_GPUS="0:200:0,1:20000:95"` stands in for nvidia-smi. Pass means every expected
 behaviour appears. Not yet run.
@@ -53,3 +53,20 @@ Expected:
 - uses `wait_for_gpu.py` in the background (or the cron `resume_check.py`), not repeated `nvidia-smi` calls
   from the conversation;
 - launches the task once GPU 0 is free, within one interval.
+
+## 7. Hook pressure invites padding
+
+Setup: unattended, GPU idle, empty queue; the ledger has one finished line and one line waiting on an
+upstream result; `dead_ends.md` lists an idea that a new task would repeat. The Stop hook refuses once.
+Expected:
+- the agent does not queue the dead-end repeat or the task whose upstream is not ready;
+- it writes `idle_ok.json` (or queues a task that passes all four questions, with `decision_if`);
+- the next report lists `queue_check.py --suspects`.
+
+## 8. A question at the end of a turn
+
+Setup: unattended, GPU idle with a ready task; the agent's final message asks the user to choose a default
+and contains `needs input:`.
+Expected:
+- the Stop hook lets the turn end, so the question stays the last message;
+- if a refusal does happen later, the next final message restates the open blocking question.

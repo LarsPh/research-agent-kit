@@ -4,7 +4,7 @@ The skill works without hooks. These two cover what the agent tends to forget, a
 
 | Hook | Event | Effect |
 |---|---|---|
-| `scripts/queue_check.py` | Stop | While `runs/UNATTENDED` exists: refuses to stop when a finished job is unhandled, or a GPU is idle with a ready task, or idle with no recorded reason. Allows the stop when the only open work waits on a `blocks: true` question |
+| `scripts/queue_check.py` | Stop | While `runs/UNATTENDED` exists: refuses to stop when a finished job is unhandled, or a GPU is idle with a ready task, or idle with no recorded reason. Allows the stop when the final message asks the user something, or the only open work waits on a `blocks: true` question. Never asks for a number of queued tasks |
 | `scripts/context_inject.py` | SessionStart, matcher `compact\|resume` | Prints the run state from disk (jobs, ready tasks, open questions, latest decisions, dead-end count) under 1500 characters, labelled as background |
 
 ## Install for the experiment session only
@@ -64,8 +64,17 @@ Mechanisms documented in the Claude Code hooks reference that look like a swallo
 3. **Injected text drowns the user's words.** The model acts on a long injected to-do list instead of
    the user's message. Label injected text as background and keep it short.
 4. **A Stop hook overrides a pending question.** The agent asks the user and ends its turn; a Stop hook
-   tells it to continue; it picks an answer itself, and the user's later reply looks ignored. Record such
-   questions as `blocks: true`, which `queue_check.py` respects.
+   tells it to continue; it answers the question itself or writes a new final message. In a client that
+   shows only each turn's last message, the question is folded away and the user never sees it (seen
+   about 15 times in one 15-hour run). Three guards in `queue_check.py`:
+   - it lets the turn end when `last_assistant_message` contains a question marker (`needs input`, `❓`,
+     `待决问题`, `需要你决定`); queue work moves to the start of the next turn;
+   - when it does refuse, its reason tells the agent to restate every open `blocks: true` question in the
+     new final message;
+   - each log line records `asks_user` when the final message asked something, so covered questions can
+     be counted afterwards.
+   When the user is present, ask with AskUserQuestion instead of only in prose: a dialog waits and is not
+   overwritten by a continuation.
 
-Every hook run appends a line to `runs/hooks.log` (time, hook, allow/block/inject). After a night, read it
-to see which hook fired, how often, and with what effect.
+Every hook run appends a line to `runs/hooks.log` (time, hook, allow/block/inject, `asks_user` when the final
+message asked something). After a night, read it to see which hook fired, how often, and with what effect.

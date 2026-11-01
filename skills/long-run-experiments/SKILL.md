@@ -31,12 +31,13 @@ Copy this checklist and work through it each time you wake or finish a step:
 ```
 Long-run cycle:
 - [ ] 1. jobctl.py watch: handle every finished, failed, crashed or stalled job
-- [ ] 2. Record each result; run the report gate before calling anything a conclusion
+- [ ] 2. Record each result; run the report gate before calling anything a conclusion; list
+        queue_check.py --suspects in the report
 - [ ] 3. Update the ledger and dead_ends.md; jobctl.py handled <id>
 - [ ] 4. Answer or re-default open questions; blocking ones stop only their own line
-- [ ] 5. Queue next tasks (line + why), checking dead_ends.md first
+- [ ] 5. Queue only tasks that pass the four questions (line, decision_if, dedup, prerequisites)
 - [ ] 6. Launch onto idle GPUs with jobctl.py launch, one brief per job
-- [ ] 7. Nothing to run: write idle_ok.json with the reason, or wait_for_gpu.py in the background
+- [ ] 7. Nothing passes: write idle_ok.json; an idle GPU is cheaper than a duplicate run
 ```
 
 ### Launch only through jobctl
@@ -53,13 +54,17 @@ ends. Details in [job-lifecycle.md](references/job-lifecycle.md).
 Every question goes into `questions.json` with `blocks`, `default` and `line`. Only three kinds block: an
 irreversible action, spending beyond the budget, or a change of research direction. For anything else, act
 on the default now and say so in the report ("did X by default; tell me to change it"). A blocking question
-stops only its line. Rules and examples in [questions-and-queue.md](references/questions-and-queue.md).
+stops only its line. A final message that asks the user something marks it (`needs input:` or `❓`) so the
+Stop hook lets it stay the last message, and every final message restates the open blocking questions. When
+the user is present, ask with AskUserQuestion rather than only in prose. Rules and examples in
+[questions-and-queue.md](references/questions-and-queue.md).
 
 ### Report only what the evidence carries
 
 Before a result changes a ranking, a decision or a claim, pass [report-gate.md](references/report-gate.md):
-images inspected and paths written, known confounders ruled out, a gain inside the noise band confirmed on a
-second seed, a single scene labelled as such. Otherwise write "preliminary". After N runs on one line with
+images inspected and paths written, known confounders ruled out, a gain that changes a default reproduced on
+another scene or view, a single run or single scene labelled as such. Extra seeds follow the project's
+budget rules, not this skill. Otherwise write "preliminary". After N runs on one line with
 no gain, stop that line and ask a blocking direction question instead of burning more compute.
 
 ### Write down what failed
