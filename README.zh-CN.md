@@ -13,7 +13,7 @@
 
 | Skill | 用途 |
 |---|---|
-| [zhaorong-research-workflow](skills/zhaorong-research-workflow/SKILL.md) | 接手研究仓库，探索代码和数据，分析实验，整理下一步要研究的问题 |
+| [research-evidence-loop](skills/research-evidence-loop/SKILL.md) | 接手研究仓库，探索代码和数据，分析实验，整理下一步要研究的问题 |
 | [research-task-implementation](skills/research-task-implementation/SKILL.md) | 按已确定的方案实现一个研究任务，同时记录检查清单和验证结果；研究工作流也会调用它 |
 | [paper-code-bootstrap](skills/paper-code-bootstrap/SKILL.md) | 配置论文代码仓库，确认推理流程能跑通 |
 | [research-pack](skills/research-pack/SKILL.md) | 把一段时间内多个分支的报告、代码改动和结果图打包，发给外部模型讨论，并把对方的建议整理回项目 |
@@ -44,13 +44,13 @@
 研究代码工作流：
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s zhaorong-research-workflow research-task-implementation -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s research-evidence-loop research-task-implementation -y --copy
 ```
 
 打开一个能识别这些 skills 的新会话，明确要求初始化仓库：
 
 ```text
-用 $zhaorong-research-workflow 初始化这个已有研究仓库。先审查并拟定仓库工作流，暂不配置项目环境。
+用 $research-evidence-loop 初始化这个已有研究仓库。先审查并拟定仓库工作流，暂不配置项目环境。
 ```
 
 工作流会检查是否装有 Matt Pocock 的工程类 skills。如果缺少，先看工作流对这些依赖的说明，再安装：
