@@ -28,7 +28,7 @@ where the two disagree, the lab standard wins unless the user decides otherwise.
 
 ## Page layout
 
-- Content starts directly under the message line; use leftover space by enlarging the figure.
+- Use leftover space by enlarging the figure rather than leaving an empty band between the message line and the content.
 - The same figure on consecutive pages keeps the same position and size.
 - When a figure has several points, give each point its own call-out box next to the part it explains, with
   a short leader line; no numbered discs with a list beside the figure.
@@ -54,7 +54,7 @@ where the two disagree, the lab standard wins unless the user decides otherwise.
 - Name ablation rows by what was removed, in the words of the method pages, so each row points back to a
   page; avoid paper-internal labels.
 - State speed-ups as multiples (「約 7,000 倍」) with raw times in the table. Numbers stay in tables; text
-  gives the analysis. A main table may drop minor metrics if a backup slide has the full table.
+  gives the analysis, apart from a number in parentheses that tells outsiders what a claim means. A main table may drop minor metrics if a backup slide has the full table.
 - A formula either has every symbol explained on screen or is replaced by a qualitative explanation, with a
   hidden backup page carrying the labelled formula for questions.
 
