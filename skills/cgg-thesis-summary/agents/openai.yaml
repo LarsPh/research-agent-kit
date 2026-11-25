@@ -1,0 +1,4 @@
+interface:
+  display_name: "CGG Thesis Summary"
+  short_description: "Write an English thesis summary that examiners from other fields can follow."
+  default_prompt: "Use $cgg-thesis-summary to review this English thesis summary against the standard, starting with its story and structure."
