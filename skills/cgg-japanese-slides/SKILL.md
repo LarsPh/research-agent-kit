@@ -1,12 +1,12 @@
 ---
 name: cgg-japanese-slides
-description: Applies a house standard, taken from written reviewer comments, to Japanese research-talk slides for thesis reviews, defenses, and lab talks, covering 20pt text, one message per page, annotations on figures, figure and table conventions, citations, Japanese notation and wording, step-by-step animation, and delivery. Use when building, revising, or checking Japanese slides, alongside academic-slides. Triggers include 日语 slides, 発表資料, 審査スライド, スライドの体裁.
+description: Applies a house standard, taken from written reviewer comments, to Japanese research-talk slides for thesis reviews, defenses, and lab talks, covering 20pt text, one message per page, annotations on figures, figure and table conventions, citations, Japanese notation and wording, step-by-step animation, and delivery. Use whenever Japanese slides are built, revised, or checked, even for a single page or a quick layout fix, alongside academic-slides. Triggers include 日语 slides, 発表資料, 審査スライド, スライドの体裁.
 ---
 
 # CGG Japanese Slides
 
-This skill holds only rules that a reviewer wrote down while marking four rounds of a Japanese thesis-review
-deck. Each rule in [rules](references/rules.md) carries its source code (round and page) so it can be traced.
+This skill holds only rules that a reviewer wrote down while marking several rounds of a Japanese
+thesis-review deck; the full list is in [rules](references/rules.md).
 General workflow, storyline, and speaker scripts belong to [academic-slides](../academic-slides/SKILL.md);
 sentence polish belongs to [japanese-expression](../japanese-expression/SKILL.md). Where they overlap on
 Japanese slides, the rules here win; the user's latest explicit decision wins over everything.
@@ -44,5 +44,4 @@ Done when each edited page satisfies the rules of every area it touches.
 ## 3. Report
 
 List which rules were applied, which pages changed, and any rule that conflicts with a project decision, so
-the user can choose. Do not present these rules as the user's own preferences, and do not add rules that have
-no source code.
+the user can choose.

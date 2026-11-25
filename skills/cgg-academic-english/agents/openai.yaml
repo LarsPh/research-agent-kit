@@ -1,0 +1,4 @@
+interface:
+  display_name: "CGG Academic English"
+  short_description: "Write English research text that readers outside the field can follow."
+  default_prompt: "Use $cgg-academic-english to review this English introduction against the standard, starting with its story and structure."

@@ -34,7 +34,7 @@
 | [natural-expression](skills/natural-expression/SKILL.md) | 撰写或润色正文、slides、讲稿；`academic-slides` 写作时会调用 | 按页面文字、讲稿和正文各自的用途删去冗余，减少套话 |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | 文本是日语；`academic-slides` 处理日语内容时会调用 | 调整日语的主语省略、指代、句间衔接和朗读节奏 |
 | [cgg-japanese-slides](skills/cgg-japanese-slides/SKILL.md) | 制作或检查日语 slides（審査スライド、発表資料） | 实验室规范，只取自审阅者的书面意见：字号、版式、图、表、引用、日语写法 |
-| [cgg-thesis-summary](skills/cgg-thesis-summary/SKILL.md) | 撰写或检查给审查委员看的英文論文概要 | 实验室规范，只取自审阅者的书面意见：故事线、可读性、自足的背景说明、主张与证据、结论 |
+| [cgg-academic-english](skills/cgg-academic-english/SKILL.md) | 撰写或检查英文论文、博论、摘要、概要 | 实验室规范，取自审阅者的书面意见：故事线、可读性、自足的背景说明、主张与证据、结论 |
 | [graphics-debug](skills/graphics-debug/SKILL.md) | 渲染、重建、位姿或并排对比看着不对 | 从图上看到的异常推出按顺序排好的候补原因，再逐个用数值检查确认 |
 | [long-run-experiments](skills/long-run-experiments/SKILL.md) | 实验要无人值守地长跑（挂一晚上、夜间实验），或有排队任务时 GPU 空闲 | 无人值守跑实验：任务脱离会话运行并留完成标记，GPU 任务队列，问题只在必须时才阻塞、其余按默认继续，不轮询也能自动恢复，报告前过一遍检查 |
 
