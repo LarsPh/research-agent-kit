@@ -142,3 +142,11 @@ This repository holds reusable workflows and abstract examples. Machine configur
 mounts, data paths, credentials, and internal policies belong in the relevant private project. Research
 facts, current terminology, and agreed decisions for a presentation also remain in the project's own
 materials.
+
+## Credits
+
+`cgg-japanese-slides` and `cgg-academic-english` are built from the written feedback of
+[Prof. Yoshihiro Kanamori](https://kanamori.cs.tsukuba.ac.jp/) at the
+[Computational Geometry and Graphics Laboratory (CGG)](https://cgg.cs.tsukuba.ac.jp/), University of Tsukuba,
+on a doctoral thesis summary and thesis-review slides. Any errors in turning that feedback into rules are
+ours.

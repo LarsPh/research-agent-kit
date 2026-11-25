@@ -123,3 +123,10 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s multilane-review r
 ## 项目资料与公开边界
 
 本仓库只放通用流程和去掉具体信息的示例。机器配置、作业命令、挂载点、数据路径、凭据和内部规定都留在各自的私有项目里。报告涉及的研究事实、术语和已定决策，也以项目自己的文档为准。
+
+## 致谢
+
+`cgg-japanese-slides` 和 `cgg-academic-english` 整理自筑波大学
+[计算几何与图形学研究室 (CGG)](https://cgg.cs.tsukuba.ac.jp/)
+[金森由博教授](https://kanamori.cs.tsukuba.ac.jp/index-ja.html) 对博士论文概要和预审查 slides 的书面意见。
+将意见整理成规则时如有错误，责任在本仓库。
