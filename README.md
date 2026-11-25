@@ -95,10 +95,10 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s long-run-experimen
 ```
 
 Presentation and expression (install together; `academic-slides` reads the expression skills by relative
-reference, and layout-only edits load neither):
+reference, and layout-only edits load neither; for Japanese decks it also reads `cgg-japanese-slides`):
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression cgg-japanese-slides cgg-academic-english -y --copy
 ```
 
 Example requests:

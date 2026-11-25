@@ -84,10 +84,10 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s graphics-debug -y 
 npx skills add LarsPh/research-agent-kit -g -a claude-code -s long-run-experiments -y --copy
 ```
 
-报告与表达类（建议一起安装。`academic-slides` 会读取另外两个 skill，只调整版式时则不会）：
+报告与表达类（建议一起安装。`academic-slides` 会读取两个表达类 skill，只调整版式时则不会；做日语 slides 时还会读取 `cgg-japanese-slides`）：
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression cgg-japanese-slides cgg-academic-english -y --copy
 ```
 
 使用示例：
