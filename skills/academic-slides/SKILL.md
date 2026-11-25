@@ -7,6 +7,10 @@ description: Plans, builds, revises, and reviews academic slide decks, covering 
 
 Collaborate in the user's language; the deck's language follows the talk's requirements. Build on the user's latest file, manual edits, and confirmed wording; newer project decisions override this skill.
 
+For a Japanese deck, also read [cgg-japanese-slides](../cgg-japanese-slides/SKILL.md) (the lab standard) and
+[Japanese deck style](references/japanese-deck-style.md) (the user's own conventions). When rules conflict,
+follow the user's latest decision, then the lab standard, then the user's own style, then this skill.
+
 ## 1. Fix the task and the baseline
 
 Take the audience, duration, language, latest master file, and edit scope from existing context; ask only for gaps that change a judgment. When the user asks to analyze or discuss first (分析, 先讨论), deliver a proposal; when they ask to edit, apply, or write (改, 应用, 写入), modify the actual file. In the user's own draft text, fix only clear errors, passages marked for translation, and the issues the user named.

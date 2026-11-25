@@ -1,0 +1,4 @@
+interface:
+  display_name: "CGG Japanese Slides"
+  short_description: "Apply the reviewer-sourced house standard for Japanese talk slides."
+  default_prompt: "Use $cgg-japanese-slides to check this Japanese deck page by page against the standard and fix the violations."

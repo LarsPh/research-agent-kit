@@ -15,7 +15,7 @@ Handle text by its purpose; the user's samples and explicit revisions take prece
 | Talk script | Natural です・ます form, keeping needed connectives and breathing pauses |
 | Paper, report, or email body | Choose style, honorifics, and full paragraphs to fit the setting |
 
-Done when slide text and spoken script are distinguished. When turning bullets into a script, restore the needed relationships and predicates rather than appending です to each item.
+For slide text and speaker notes, also read [slide wording](references/slide-wording.md) (carry-over words, readings in notes). Done when slide text and spoken script are distinguished. When turning bullets into a script, restore the needed relationships and predicates rather than appending です to each item.
 
 ## 2. Keep the topic continuous
 

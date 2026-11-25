@@ -39,6 +39,8 @@ computing environment.
 | [orca-remote-bridge](skills/orca-remote-bridge/SKILL.md) | an agent runs inside Orca, or a message from another agent arrives | Let a desktop Codex/Claude app drive, question, and collect results from agents in Orca terminals on a remote SSH host |
 | [natural-expression](skills/natural-expression/SKILL.md) | you write or polish prose, slides, or speeches; `academic-slides` loads it for writing tasks | Reduce repetition and formulaic language while respecting slide text, speech, and prose formats |
 | [japanese-expression](skills/japanese-expression/SKILL.md) | the text is Japanese; `academic-slides` loads it for Japanese writing | Refine Japanese subjects, references, sentence connections, and spoken rhythm |
+| [cgg-japanese-slides](skills/cgg-japanese-slides/SKILL.md) | you build or check Japanese slides (審査スライド, 発表資料) | Lab house standard taken from written reviewer comments: text size, layout, figures, tables, citations, Japanese notation |
+| [cgg-academic-english](skills/cgg-academic-english/SKILL.md) | you write or review English research text (papers, theses, abstracts, summaries) | Lab house standard taken from written reviewer comments: story, readability, self-contained background, claims, conclusion |
 | [graphics-debug](skills/graphics-debug/SKILL.md) | a render, reconstruction, pose, or side-by-side comparison looks wrong | Turn what an image shows into ranked candidate causes and confirm each with a numeric check |
 | [long-run-experiments](skills/long-run-experiments/SKILL.md) | you leave experiments running unattended (overnight, 长跑, 挂一晚上) or GPUs sit idle while work is queued | Run experiments without supervision: detached jobs with done markers, a GPU queue, questions that block only when they must, resume without polling, and a report gate |
 
@@ -93,10 +95,10 @@ npx skills add LarsPh/research-agent-kit -g -a claude-code -s long-run-experimen
 ```
 
 Presentation and expression (install together; `academic-slides` reads the expression skills by relative
-reference, and layout-only edits load neither):
+reference, and layout-only edits load neither; for Japanese decks it also reads `cgg-japanese-slides`):
 
 ```sh
-npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression -y --copy
+npx skills add LarsPh/research-agent-kit -g -a codex -s academic-slides natural-expression japanese-expression cgg-japanese-slides cgg-academic-english -y --copy
 ```
 
 Example requests:
